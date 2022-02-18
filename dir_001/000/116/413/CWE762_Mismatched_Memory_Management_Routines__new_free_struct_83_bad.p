@@ -1,0 +1,4436 @@
+extern "C" 
+{
+typedef long unsigned int size_t;
+typedef __builtin_va_list va_list;
+typedef __builtin_va_list __gnuc_va_list;
+typedef unsigned char __u_char;
+typedef unsigned short int __u_short;
+typedef unsigned int __u_int;
+typedef unsigned long int __u_long;
+typedef signed char __int8_t;
+typedef unsigned char __uint8_t;
+typedef signed short int __int16_t;
+typedef unsigned short int __uint16_t;
+typedef signed int __int32_t;
+typedef unsigned int __uint32_t;
+typedef signed long int __int64_t;
+typedef unsigned long int __uint64_t;
+typedef __int8_t __int_least8_t;
+typedef __uint8_t __uint_least8_t;
+typedef __int16_t __int_least16_t;
+typedef __uint16_t __uint_least16_t;
+typedef __int32_t __int_least32_t;
+typedef __uint32_t __uint_least32_t;
+typedef __int64_t __int_least64_t;
+typedef __uint64_t __uint_least64_t;
+typedef long int __quad_t;
+typedef unsigned long int __u_quad_t;
+typedef long int __intmax_t;
+typedef unsigned long int __uintmax_t;
+typedef unsigned long int __dev_t;
+typedef unsigned int __uid_t;
+typedef unsigned int __gid_t;
+typedef unsigned long int __ino_t;
+typedef unsigned long int __ino64_t;
+typedef unsigned int __mode_t;
+typedef unsigned long int __nlink_t;
+typedef long int __off_t;
+typedef long int __off64_t;
+typedef int __pid_t;
+typedef struct { int __val[2]; } __fsid_t;
+{
+typedef long int __clock_t;
+typedef unsigned long int __rlim_t;
+typedef unsigned long int __rlim64_t;
+typedef unsigned int __id_t;
+typedef long int __time_t;
+typedef unsigned int __useconds_t;
+typedef long int __suseconds_t;
+typedef int __daddr_t;
+typedef int __key_t;
+typedef int __clockid_t;
+typedef void * __timer_t;
+typedef long int __blksize_t;
+typedef long int __blkcnt_t;
+typedef long int __blkcnt64_t;
+typedef unsigned long int __fsblkcnt_t;
+typedef unsigned long int __fsblkcnt64_t;
+typedef unsigned long int __fsfilcnt_t;
+typedef unsigned long int __fsfilcnt64_t;
+typedef long int __fsword_t;
+typedef long int __ssize_t;
+typedef long int __syscall_slong_t;
+typedef unsigned long int __syscall_ulong_t;
+typedef __off64_t __loff_t;
+typedef char *__caddr_t;
+typedef long int __intptr_t;
+typedef unsigned int __socklen_t;
+typedef int __sig_atomic_t;
+typedef struct
+{
+  int __count;
+  union
+  
+{
+    unsigned int __wch;
+    char __wchb[4];
+  } __value;
+} __mbstate_t;
+typedef struct _G_fpos_t
+{
+  __off_t __pos;
+  __mbstate_t __state;
+} __fpos_t;
+typedef struct _G_fpos64_t
+{
+  __off64_t __pos;
+  __mbstate_t __state;
+} __fpos64_t;
+struct _IO_FILE;
+typedef struct _IO_FILE __FILE;
+struct _IO_FILE;
+typedef struct _IO_FILE FILE;
+struct _IO_FILE;
+struct _IO_marker;
+struct _IO_codecvt;
+struct _IO_wide_data;
+typedef void _IO_lock_t;
+struct _IO_FILE
+{
+  int _flags;
+  char *_IO_read_ptr;
+  char *_IO_read_end;
+  char *_IO_read_base;
+  char *_IO_write_base;
+  char *_IO_write_ptr;
+  char *_IO_write_end;
+  char *_IO_buf_base;
+  char *_IO_buf_end;
+  char *_IO_save_base;
+  char *_IO_backup_base;
+  char *_IO_save_end;
+  struct _IO_marker *_markers;
+  struct _IO_FILE *_chain;
+  int _fileno;
+  int _flags2;
+  __off_t _old_offset;
+  unsigned short _cur_column;
+  signed char _vtable_offset;
+  char _shortbuf[1];
+  _IO_lock_t *_lock;
+  __off64_t _offset;
+  struct _IO_codecvt *_codecvt;
+  struct _IO_wide_data *_wide_data;
+  struct _IO_FILE *_freeres_list;
+  void *_freeres_buf;
+  size_t __pad5;
+  int _mode;
+  char _unused2[15 * sizeof (int) - 4 * sizeof (void *) - sizeof (size_t)];
+};
+typedef __ssize_t cookie_read_function_t (void *__cookie, char *__buf,
+                                          size_t __nbytes);
+typedef __ssize_t cookie_write_function_t (void *__cookie, const char *__buf,
+                                           size_t __nbytes);
+typedef int cookie_seek_function_t (void *__cookie, __off64_t *__pos, int __w);
+typedef int cookie_close_function_t (void *__cookie);
+typedef struct _IO_cookie_io_functions_t
+{
+  cookie_read_function_t *read;
+  cookie_write_function_t *write;
+  cookie_seek_function_t *seek;
+  cookie_close_function_t *close;
+} cookie_io_functions_t;
+typedef __gnuc_va_list va_list;
+typedef __off_t off_t;
+typedef __off64_t off64_t;
+typedef __ssize_t ssize_t;
+typedef __fpos_t fpos_t;
+typedef __fpos64_t fpos64_t;
+extern FILE *stdin;
+extern FILE *stdout;
+extern FILE *stderr;
+extern int remove (const char *__filename) throw ();
+extern int rename (const char *__old, const char *__new) throw ();
+extern int renameat (int __oldfd, const char *__old, int __newfd,
+       const char *__new) throw ();
+extern int renameat2 (int __oldfd, const char *__old, int __newfd,
+        const char *__new, unsigned int __flags) throw ();
+extern FILE *tmpfile (void) ;
+extern FILE *tmpfile64 (void) ;
+extern char *tmpnam (char *__s) throw () ;
+extern char *tmpnam_r (char *__s) throw () ;
+extern char *tempnam (const char *__dir, const char *__pfx)
+     throw () __attribute__ ((__malloc__)) ;
+extern int fclose (FILE *__stream);
+extern int fflush (FILE *__stream);
+extern int fflush_unlocked (FILE *__stream);
+extern int fcloseall (void);
+extern FILE *fopen (const char *__restrict __filename,
+      const char *__restrict __modes) ;
+extern FILE *freopen (const char *__restrict __filename,
+        const char *__restrict __modes,
+        FILE *__restrict __stream) ;
+extern FILE *fopen64 (const char *__restrict __filename,
+        const char *__restrict __modes) ;
+extern FILE *freopen64 (const char *__restrict __filename,
+   const char *__restrict __modes,
+   FILE *__restrict __stream) ;
+extern FILE *fdopen (int __fd, const char *__modes) throw () ;
+extern FILE *fopencookie (void *__restrict __magic_cookie,
+     const char *__restrict __modes,
+     cookie_io_functions_t __io_funcs) throw () ;
+extern FILE *fmemopen (void *__s, size_t __len, const char *__modes)
+  throw () ;
+extern FILE *open_memstream (char **__bufloc, size_t *__sizeloc) throw () ;
+extern void setbuf (FILE *__restrict __stream, char *__restrict __buf) throw ();
+extern int setvbuf (FILE *__restrict __stream, char *__restrict __buf,
+      int __modes, size_t __n) throw ();
+extern void setbuffer (FILE *__restrict __stream, char *__restrict __buf,
+         size_t __size) throw ();
+extern void setlinebuf (FILE *__stream) throw ();
+extern int fprintf (FILE *__restrict __stream,
+      const char *__restrict __format, ...);
+extern int printf (const char *__restrict __format, ...);
+extern int sprintf (char *__restrict __s,
+      const char *__restrict __format, ...) throw ();
+extern int vfprintf (FILE *__restrict __s, const char *__restrict __format,
+       __gnuc_va_list __arg);
+extern int vprintf (const char *__restrict __format, __gnuc_va_list __arg);
+extern int vsprintf (char *__restrict __s, const char *__restrict __format,
+       __gnuc_va_list __arg) throw ();
+extern int snprintf (char *__restrict __s, size_t __maxlen,
+       const char *__restrict __format, ...)
+     throw () __attribute__ ((__format__ (__printf__, 3, 4)));
+extern int vsnprintf (char *__restrict __s, size_t __maxlen,
+        const char *__restrict __format, __gnuc_va_list __arg)
+     throw () __attribute__ ((__format__ (__printf__, 3, 0)));
+extern int vasprintf (char **__restrict __ptr, const char *__restrict __f,
+        __gnuc_va_list __arg)
+     throw () __attribute__ ((__format__ (__printf__, 2, 0))) ;
+extern int __asprintf (char **__restrict __ptr,
+         const char *__restrict __fmt, ...)
+     throw () __attribute__ ((__format__ (__printf__, 2, 3))) ;
+extern int asprintf (char **__restrict __ptr,
+       const char *__restrict __fmt, ...)
+     throw () __attribute__ ((__format__ (__printf__, 2, 3))) ;
+extern int vdprintf (int __fd, const char *__restrict __fmt,
+       __gnuc_va_list __arg)
+     __attribute__ ((__format__ (__printf__, 2, 0)));
+extern int dprintf (int __fd, const char *__restrict __fmt, ...)
+     __attribute__ ((__format__ (__printf__, 2, 3)));
+extern int fscanf (FILE *__restrict __stream,
+     const char *__restrict __format, ...) ;
+extern int scanf (const char *__restrict __format, ...) ;
+extern int sscanf (const char *__restrict __s,
+     const char *__restrict __format, ...) throw ();
+extern int fscanf (FILE *__restrict __stream, const char *__restrict __format, ...) __asm__ ("" "__isoc99_fscanf") ;
+extern int scanf (const char *__restrict __format, ...) __asm__ ("" "__isoc99_scanf") ;
+extern int sscanf (const char *__restrict __s, const char *__restrict __format, ...) throw () __asm__ ("" "__isoc99_sscanf");
+extern int vfscanf (FILE *__restrict __s, const char *__restrict __format,
+      __gnuc_va_list __arg)
+     __attribute__ ((__format__ (__scanf__, 2, 0))) ;
+extern int vscanf (const char *__restrict __format, __gnuc_va_list __arg)
+     __attribute__ ((__format__ (__scanf__, 1, 0))) ;
+extern int vsscanf (const char *__restrict __s,
+      const char *__restrict __format, __gnuc_va_list __arg)
+     throw () __attribute__ ((__format__ (__scanf__, 2, 0)));
+extern int vfscanf (FILE *__restrict __s, const char *__restrict __format, __gnuc_va_list __arg) __asm__ ("" "__isoc99_vfscanf")
+     __attribute__ ((__format__ (__scanf__, 2, 0))) ;
+extern int vscanf (const char *__restrict __format, __gnuc_va_list __arg) __asm__ ("" "__isoc99_vscanf")
+     __attribute__ ((__format__ (__scanf__, 1, 0))) ;
+extern int vsscanf (const char *__restrict __s, const char *__restrict __format, __gnuc_va_list __arg) throw () __asm__ ("" "__isoc99_vsscanf")
+     __attribute__ ((__format__ (__scanf__, 2, 0)));
+extern int fgetc (FILE *__stream);
+extern int getc (FILE *__stream);
+extern int getchar (void);
+extern int getc_unlocked (FILE *__stream);
+extern int getchar_unlocked (void);
+extern int fgetc_unlocked (FILE *__stream);
+extern int fputc (int __c, FILE *__stream);
+extern int putc (int __c, FILE *__stream);
+extern int putchar (int __c);
+extern int fputc_unlocked (int __c, FILE *__stream);
+extern int putc_unlocked (int __c, FILE *__stream);
+extern int putchar_unlocked (int __c);
+extern int getw (FILE *__stream);
+extern int putw (int __w, FILE *__stream);
+extern char *fgets (char *__restrict __s, int __n, FILE *__restrict __stream)
+          ;
+extern char *fgets_unlocked (char *__restrict __s, int __n,
+        FILE *__restrict __stream) ;
+extern __ssize_t __getdelim (char **__restrict __lineptr,
+                             size_t *__restrict __n, int __delimiter,
+                             FILE *__restrict __stream) ;
+extern __ssize_t getdelim (char **__restrict __lineptr,
+                           size_t *__restrict __n, int __delimiter,
+                           FILE *__restrict __stream) ;
+extern __ssize_t getline (char **__restrict __lineptr,
+                          size_t *__restrict __n,
+                          FILE *__restrict __stream) ;
+extern int fputs (const char *__restrict __s, FILE *__restrict __stream);
+extern int puts (const char *__s);
+extern int ungetc (int __c, FILE *__stream);
+extern size_t fread (void *__restrict __ptr, size_t __size,
+       size_t __n, FILE *__restrict __stream) ;
+extern size_t fwrite (const void *__restrict __ptr, size_t __size,
+        size_t __n, FILE *__restrict __s);
+extern int fputs_unlocked (const char *__restrict __s,
+      FILE *__restrict __stream);
+extern size_t fread_unlocked (void *__restrict __ptr, size_t __size,
+         size_t __n, FILE *__restrict __stream) ;
+extern size_t fwrite_unlocked (const void *__restrict __ptr, size_t __size,
+          size_t __n, FILE *__restrict __stream);
+extern int fseek (FILE *__stream, long int __off, int __whence);
+extern long int ftell (FILE *__stream) ;
+extern void rewind (FILE *__stream);
+extern int fseeko (FILE *__stream, __off_t __off, int __whence);
+extern __off_t ftello (FILE *__stream) ;
+extern int fgetpos (FILE *__restrict __stream, fpos_t *__restrict __pos);
+extern int fsetpos (FILE *__stream, const fpos_t *__pos);
+extern int fseeko64 (FILE *__stream, __off64_t __off, int __whence);
+extern __off64_t ftello64 (FILE *__stream) ;
+extern int fgetpos64 (FILE *__restrict __stream, fpos64_t *__restrict __pos);
+extern int fsetpos64 (FILE *__stream, const fpos64_t *__pos);
+extern void clearerr (FILE *__stream) throw ();
+extern int feof (FILE *__stream) throw () ;
+extern int ferror (FILE *__stream) throw () ;
+extern void clearerr_unlocked (FILE *__stream) throw ();
+extern int feof_unlocked (FILE *__stream) throw () ;
+extern int ferror_unlocked (FILE *__stream) throw () ;
+extern void perror (const char *__s);
+extern int sys_nerr;
+extern const char *const sys_errlist[];
+extern int _sys_nerr;
+extern const char *const _sys_errlist[];
+extern int fileno (FILE *__stream) throw () ;
+extern int fileno_unlocked (FILE *__stream) throw () ;
+extern FILE *popen (const char *__command, const char *__modes) ;
+extern int pclose (FILE *__stream);
+extern char *ctermid (char *__s) throw ();
+extern char *cuserid (char *__s);
+struct obstack;
+extern int obstack_printf (struct obstack *__restrict __obstack,
+      const char *__restrict __format, ...)
+     throw () __attribute__ ((__format__ (__printf__, 2, 3)));
+extern int obstack_vprintf (struct obstack *__restrict __obstack,
+       const char *__restrict __format,
+       __gnuc_va_list __args)
+     throw () __attribute__ ((__format__ (__printf__, 2, 0)));
+extern void flockfile (FILE *__stream) throw ();
+extern int ftrylockfile (FILE *__stream) throw () ;
+extern void funlockfile (FILE *__stream) throw ();
+extern int __uflow (FILE *);
+extern int __overflow (FILE *, int);
+}
+namespace std
+{
+  typedef long unsigned int size_t;
+  typedef long int ptrdiff_t;
+  typedef decltype(nullptr) nullptr_t;
+}
+namespace std
+{
+  inline namespace __cxx11 __attribute__((__abi_tag__ ("cxx11"))) { }
+{
+}
+namespace __gnu_cxx
+{
+  inline namespace __cxx11 __attribute__((__abi_tag__ ("cxx11"))) { }
+{
+}
+typedef long unsigned int size_t;
+extern "C" 
+{
+typedef enum
+{
+  P_ALL,
+  P_PID,
+  P_PGID
+} idtype_t;
+typedef float _Float32;
+typedef double _Float64;
+typedef double _Float32x;
+typedef long double _Float64x;
+typedef struct
+  
+{
+    int quot;
+    int rem;
+  } div_t;
+typedef struct
+  
+{
+    long int quot;
+    long int rem;
+  } ldiv_t;
+__extension__ typedef struct
+  
+{
+    long long int quot;
+    long long int rem;
+  } lldiv_t;
+extern size_t __ctype_get_mb_cur_max (void) throw () ;
+extern double atof (const char *__nptr)
+     throw () __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1))) ;
+extern int atoi (const char *__nptr)
+     throw () __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1))) ;
+extern long int atol (const char *__nptr)
+     throw () __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1))) ;
+__extension__ extern long long int atoll (const char *__nptr)
+     throw () __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1))) ;
+extern double strtod (const char *__restrict __nptr,
+        char **__restrict __endptr)
+     throw () __attribute__ ((__nonnull__ (1)));
+extern float strtof (const char *__restrict __nptr,
+       char **__restrict __endptr) throw () __attribute__ ((__nonnull__ (1)));
+extern long double strtold (const char *__restrict __nptr,
+       char **__restrict __endptr)
+     throw () __attribute__ ((__nonnull__ (1)));
+extern _Float32 strtof32 (const char *__restrict __nptr,
+     char **__restrict __endptr)
+     throw () __attribute__ ((__nonnull__ (1)));
+extern _Float64 strtof64 (const char *__restrict __nptr,
+     char **__restrict __endptr)
+     throw () __attribute__ ((__nonnull__ (1)));
+extern _Float32x strtof32x (const char *__restrict __nptr,
+       char **__restrict __endptr)
+     throw () __attribute__ ((__nonnull__ (1)));
+extern _Float64x strtof64x (const char *__restrict __nptr,
+       char **__restrict __endptr)
+     throw () __attribute__ ((__nonnull__ (1)));
+extern long int strtol (const char *__restrict __nptr,
+   char **__restrict __endptr, int __base)
+     throw () __attribute__ ((__nonnull__ (1)));
+extern unsigned long int strtoul (const char *__restrict __nptr,
+      char **__restrict __endptr, int __base)
+     throw () __attribute__ ((__nonnull__ (1)));
+__extension__
+extern long long int strtoq (const char *__restrict __nptr,
+        char **__restrict __endptr, int __base)
+     throw () __attribute__ ((__nonnull__ (1)));
+__extension__
+extern unsigned long long int strtouq (const char *__restrict __nptr,
+           char **__restrict __endptr, int __base)
+     throw () __attribute__ ((__nonnull__ (1)));
+__extension__
+extern long long int strtoll (const char *__restrict __nptr,
+         char **__restrict __endptr, int __base)
+     throw () __attribute__ ((__nonnull__ (1)));
+__extension__
+extern unsigned long long int strtoull (const char *__restrict __nptr,
+     char **__restrict __endptr, int __base)
+     throw () __attribute__ ((__nonnull__ (1)));
+extern int strfromd (char *__dest, size_t __size, const char *__format,
+       double __f)
+     throw () __attribute__ ((__nonnull__ (3)));
+extern int strfromf (char *__dest, size_t __size, const char *__format,
+       float __f)
+     throw () __attribute__ ((__nonnull__ (3)));
+extern int strfroml (char *__dest, size_t __size, const char *__format,
+       long double __f)
+     throw () __attribute__ ((__nonnull__ (3)));
+extern int strfromf32 (char *__dest, size_t __size, const char * __format,
+         _Float32 __f)
+     throw () __attribute__ ((__nonnull__ (3)));
+extern int strfromf64 (char *__dest, size_t __size, const char * __format,
+         _Float64 __f)
+     throw () __attribute__ ((__nonnull__ (3)));
+extern int strfromf32x (char *__dest, size_t __size, const char * __format,
+   _Float32x __f)
+     throw () __attribute__ ((__nonnull__ (3)));
+extern int strfromf64x (char *__dest, size_t __size, const char * __format,
+   _Float64x __f)
+     throw () __attribute__ ((__nonnull__ (3)));
+struct __locale_struct
+{
+  struct __locale_data *__locales[13];
+  const unsigned short int *__ctype_b;
+  const int *__ctype_tolower;
+  const int *__ctype_toupper;
+  const char *__names[13];
+};
+typedef struct __locale_struct *__locale_t;
+typedef __locale_t locale_t;
+extern long int strtol_l (const char *__restrict __nptr,
+     char **__restrict __endptr, int __base,
+     locale_t __loc) throw () __attribute__ ((__nonnull__ (1, 4)));
+extern unsigned long int strtoul_l (const char *__restrict __nptr,
+        char **__restrict __endptr,
+        int __base, locale_t __loc)
+     throw () __attribute__ ((__nonnull__ (1, 4)));
+__extension__
+extern long long int strtoll_l (const char *__restrict __nptr,
+    char **__restrict __endptr, int __base,
+    locale_t __loc)
+     throw () __attribute__ ((__nonnull__ (1, 4)));
+__extension__
+extern unsigned long long int strtoull_l (const char *__restrict __nptr,
+       char **__restrict __endptr,
+       int __base, locale_t __loc)
+     throw () __attribute__ ((__nonnull__ (1, 4)));
+extern double strtod_l (const char *__restrict __nptr,
+   char **__restrict __endptr, locale_t __loc)
+     throw () __attribute__ ((__nonnull__ (1, 3)));
+extern float strtof_l (const char *__restrict __nptr,
+         char **__restrict __endptr, locale_t __loc)
+     throw () __attribute__ ((__nonnull__ (1, 3)));
+extern long double strtold_l (const char *__restrict __nptr,
+         char **__restrict __endptr,
+         locale_t __loc)
+     throw () __attribute__ ((__nonnull__ (1, 3)));
+extern _Float32 strtof32_l (const char *__restrict __nptr,
+       char **__restrict __endptr,
+       locale_t __loc)
+     throw () __attribute__ ((__nonnull__ (1, 3)));
+extern _Float64 strtof64_l (const char *__restrict __nptr,
+       char **__restrict __endptr,
+       locale_t __loc)
+     throw () __attribute__ ((__nonnull__ (1, 3)));
+extern _Float32x strtof32x_l (const char *__restrict __nptr,
+         char **__restrict __endptr,
+         locale_t __loc)
+     throw () __attribute__ ((__nonnull__ (1, 3)));
+extern _Float64x strtof64x_l (const char *__restrict __nptr,
+         char **__restrict __endptr,
+         locale_t __loc)
+     throw () __attribute__ ((__nonnull__ (1, 3)));
+extern char *l64a (long int __n) throw () ;
+extern long int a64l (const char *__s)
+     throw () __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1))) ;
+extern "C" 
+{
+typedef __u_char u_char;
+typedef __u_short u_short;
+typedef __u_int u_int;
+typedef __u_long u_long;
+typedef __quad_t quad_t;
+typedef __u_quad_t u_quad_t;
+typedef __fsid_t fsid_t;
+typedef __loff_t loff_t;
+typedef __ino_t ino_t;
+typedef __ino64_t ino64_t;
+typedef __dev_t dev_t;
+typedef __gid_t gid_t;
+typedef __mode_t mode_t;
+typedef __nlink_t nlink_t;
+typedef __uid_t uid_t;
+typedef __pid_t pid_t;
+typedef __id_t id_t;
+typedef __daddr_t daddr_t;
+typedef __caddr_t caddr_t;
+typedef __key_t key_t;
+typedef __clock_t clock_t;
+typedef __clockid_t clockid_t;
+typedef __time_t time_t;
+typedef __timer_t timer_t;
+typedef __useconds_t useconds_t;
+typedef __suseconds_t suseconds_t;
+typedef long unsigned int size_t;
+typedef unsigned long int ulong;
+typedef unsigned short int ushort;
+typedef unsigned int uint;
+typedef __int8_t int8_t;
+typedef __int16_t int16_t;
+typedef __int32_t int32_t;
+typedef __int64_t int64_t;
+typedef __uint8_t u_int8_t;
+typedef __uint16_t u_int16_t;
+typedef __uint32_t u_int32_t;
+typedef __uint64_t u_int64_t;
+typedef int register_t __attribute__ ((__mode__ (__word__)));
+static __inline __uint16_t
+__bswap_16 (__uint16_t __bsx)
+{
+  return ((__uint16_t) ((((__bsx) >> 8) & 0xff) | (((__bsx) & 0xff) << 8)));
+}
+static __inline __uint32_t
+__bswap_32 (__uint32_t __bsx)
+{
+  return ((((__bsx) & 0xff000000u) >> 24) | (((__bsx) & 0x00ff0000u) >> 8) | (((__bsx) & 0x0000ff00u) << 8) | (((__bsx) & 0x000000ffu) << 24));
+}
+__extension__ static __inline __uint64_t
+__bswap_64 (__uint64_t __bsx)
+{
+  return ((((__bsx) & 0xff00000000000000ull) >> 56) | (((__bsx) & 0x00ff000000000000ull) >> 40) | (((__bsx) & 0x0000ff0000000000ull) >> 24) | (((__bsx) & 0x000000ff00000000ull) >> 8) | (((__bsx) & 0x00000000ff000000ull) << 8) | (((__bsx) & 0x0000000000ff0000ull) << 24) | (((__bsx) & 0x000000000000ff00ull) << 40) | (((__bsx) & 0x00000000000000ffull) << 56));
+}
+static __inline __uint16_t
+__uint16_identity (__uint16_t __x)
+{
+  return __x;
+}
+static __inline __uint32_t
+__uint32_identity (__uint32_t __x)
+{
+  return __x;
+}
+static __inline __uint64_t
+__uint64_identity (__uint64_t __x)
+{
+  return __x;
+}
+typedef struct
+{
+  unsigned long int __val[(1024 / (8 * sizeof (unsigned long int)))];
+} __sigset_t;
+typedef __sigset_t sigset_t;
+struct timeval
+{
+  __time_t tv_sec;
+  __suseconds_t tv_usec;
+};
+struct timespec
+{
+  __time_t tv_sec;
+  __syscall_slong_t tv_nsec;
+};
+typedef long int __fd_mask;
+typedef struct
+  
+{
+    __fd_mask fds_bits[1024 / (8 * (int) sizeof (__fd_mask))];
+  } fd_set;
+typedef __fd_mask fd_mask;
+extern "C" 
+{
+extern int select (int __nfds, fd_set *__restrict __readfds,
+     fd_set *__restrict __writefds,
+     fd_set *__restrict __exceptfds,
+     struct timeval *__restrict __timeout);
+extern int pselect (int __nfds, fd_set *__restrict __readfds,
+      fd_set *__restrict __writefds,
+      fd_set *__restrict __exceptfds,
+      const struct timespec *__restrict __timeout,
+      const __sigset_t *__restrict __sigmask);
+}
+typedef __blksize_t blksize_t;
+typedef __blkcnt_t blkcnt_t;
+typedef __fsblkcnt_t fsblkcnt_t;
+typedef __fsfilcnt_t fsfilcnt_t;
+typedef __blkcnt64_t blkcnt64_t;
+typedef __fsblkcnt64_t fsblkcnt64_t;
+typedef __fsfilcnt64_t fsfilcnt64_t;
+typedef struct __pthread_internal_list
+{
+  struct __pthread_internal_list *__prev;
+  struct __pthread_internal_list *__next;
+} __pthread_list_t;
+typedef struct __pthread_internal_slist
+{
+  struct __pthread_internal_slist *__next;
+} __pthread_slist_t;
+struct __pthread_mutex_s
+{
+  int __lock;
+  unsigned int __count;
+  int __owner;
+  unsigned int __nusers;
+  int __kind;
+  short __spins;
+  short __elision;
+  __pthread_list_t __list;
+};
+struct __pthread_rwlock_arch_t
+{
+  unsigned int __readers;
+  unsigned int __writers;
+  unsigned int __wrphase_futex;
+  unsigned int __writers_futex;
+  unsigned int __pad3;
+  unsigned int __pad4;
+  int __cur_writer;
+  int __shared;
+  signed char __rwelision;
+  unsigned char __pad1[7];
+  unsigned long int __pad2;
+  unsigned int __flags;
+};
+struct __pthread_cond_s
+{
+  __extension__ union
+  
+{
+    __extension__ unsigned long long int __wseq;
+    struct
+    
+{
+      unsigned int __low;
+      unsigned int __high;
+    } __wseq32;
+  };
+  __extension__ union
+  
+{
+    __extension__ unsigned long long int __g1_start;
+    struct
+    
+{
+      unsigned int __low;
+      unsigned int __high;
+    } __g1_start32;
+  };
+  unsigned int __g_refs[2] ;
+  unsigned int __g_size[2];
+  unsigned int __g1_orig_size;
+  unsigned int __wrefs;
+  unsigned int __g_signals[2];
+};
+typedef unsigned long int pthread_t;
+typedef union
+{
+  char __size[4];
+  int __align;
+} pthread_mutexattr_t;
+typedef union
+{
+  char __size[4];
+  int __align;
+} pthread_condattr_t;
+typedef unsigned int pthread_key_t;
+typedef int pthread_once_t;
+union pthread_attr_t
+{
+  char __size[56];
+  long int __align;
+};
+typedef union pthread_attr_t pthread_attr_t;
+typedef union
+{
+  struct __pthread_mutex_s __data;
+  char __size[40];
+  long int __align;
+} pthread_mutex_t;
+typedef union
+{
+  struct __pthread_cond_s __data;
+  char __size[48];
+  __extension__ long long int __align;
+} pthread_cond_t;
+typedef union
+{
+  struct __pthread_rwlock_arch_t __data;
+  char __size[56];
+  long int __align;
+} pthread_rwlock_t;
+typedef union
+{
+  char __size[8];
+  long int __align;
+} pthread_rwlockattr_t;
+typedef volatile int pthread_spinlock_t;
+typedef union
+{
+  char __size[32];
+  long int __align;
+} pthread_barrier_t;
+typedef union
+{
+  char __size[4];
+  int __align;
+} pthread_barrierattr_t;
+}
+extern long int random (void) throw ();
+extern void srandom (unsigned int __seed) throw ();
+extern char *initstate (unsigned int __seed, char *__statebuf,
+   size_t __statelen) throw () __attribute__ ((__nonnull__ (2)));
+extern char *setstate (char *__statebuf) throw () __attribute__ ((__nonnull__ (1)));
+struct random_data
+  
+{
+    int32_t *fptr;
+    int32_t *rptr;
+    int32_t *state;
+    int rand_type;
+    int rand_deg;
+    int rand_sep;
+    int32_t *end_ptr;
+  };
+extern int random_r (struct random_data *__restrict __buf,
+       int32_t *__restrict __result) throw () __attribute__ ((__nonnull__ (1, 2)));
+extern int srandom_r (unsigned int __seed, struct random_data *__buf)
+     throw () __attribute__ ((__nonnull__ (2)));
+extern int initstate_r (unsigned int __seed, char *__restrict __statebuf,
+   size_t __statelen,
+   struct random_data *__restrict __buf)
+     throw () __attribute__ ((__nonnull__ (2, 4)));
+extern int setstate_r (char *__restrict __statebuf,
+         struct random_data *__restrict __buf)
+     throw () __attribute__ ((__nonnull__ (1, 2)));
+extern int rand (void) throw ();
+extern void srand (unsigned int __seed) throw ();
+extern int rand_r (unsigned int *__seed) throw ();
+extern double drand48 (void) throw ();
+extern double erand48 (unsigned short int __xsubi[3]) throw () __attribute__ ((__nonnull__ (1)));
+extern long int lrand48 (void) throw ();
+extern long int nrand48 (unsigned short int __xsubi[3])
+     throw () __attribute__ ((__nonnull__ (1)));
+extern long int mrand48 (void) throw ();
+extern long int jrand48 (unsigned short int __xsubi[3])
+     throw () __attribute__ ((__nonnull__ (1)));
+extern void srand48 (long int __seedval) throw ();
+extern unsigned short int *seed48 (unsigned short int __seed16v[3])
+     throw () __attribute__ ((__nonnull__ (1)));
+extern void lcong48 (unsigned short int __param[7]) throw () __attribute__ ((__nonnull__ (1)));
+struct drand48_data
+  
+{
+    unsigned short int __x[3];
+    unsigned short int __old_x[3];
+    unsigned short int __c;
+    unsigned short int __init;
+    __extension__ unsigned long long int __a;
+  };
+extern int drand48_r (struct drand48_data *__restrict __buffer,
+        double *__restrict __result) throw () __attribute__ ((__nonnull__ (1, 2)));
+extern int erand48_r (unsigned short int __xsubi[3],
+        struct drand48_data *__restrict __buffer,
+        double *__restrict __result) throw () __attribute__ ((__nonnull__ (1, 2)));
+extern int lrand48_r (struct drand48_data *__restrict __buffer,
+        long int *__restrict __result)
+     throw () __attribute__ ((__nonnull__ (1, 2)));
+extern int nrand48_r (unsigned short int __xsubi[3],
+        struct drand48_data *__restrict __buffer,
+        long int *__restrict __result)
+     throw () __attribute__ ((__nonnull__ (1, 2)));
+extern int mrand48_r (struct drand48_data *__restrict __buffer,
+        long int *__restrict __result)
+     throw () __attribute__ ((__nonnull__ (1, 2)));
+extern int jrand48_r (unsigned short int __xsubi[3],
+        struct drand48_data *__restrict __buffer,
+        long int *__restrict __result)
+     throw () __attribute__ ((__nonnull__ (1, 2)));
+extern int srand48_r (long int __seedval, struct drand48_data *__buffer)
+     throw () __attribute__ ((__nonnull__ (2)));
+extern int seed48_r (unsigned short int __seed16v[3],
+       struct drand48_data *__buffer) throw () __attribute__ ((__nonnull__ (1, 2)));
+extern int lcong48_r (unsigned short int __param[7],
+        struct drand48_data *__buffer)
+     throw () __attribute__ ((__nonnull__ (1, 2)));
+extern void *malloc (size_t __size) throw () __attribute__ ((__malloc__))
+                                         ;
+extern void *calloc (size_t __nmemb, size_t __size)
+     throw () __attribute__ ((__malloc__)) ;
+extern void *realloc (void *__ptr, size_t __size)
+     throw () __attribute__ ((__warn_unused_result__)) ;
+extern void *reallocarray (void *__ptr, size_t __nmemb, size_t __size)
+     throw () __attribute__ ((__warn_unused_result__))
+                                      ;
+extern void free (void *__ptr) throw ();
+typedef long unsigned int size_t;
+extern "C" 
+{
+extern void *alloca (size_t __size) throw ();
+}
+extern void *valloc (size_t __size) throw () __attribute__ ((__malloc__))
+                                         ;
+extern int posix_memalign (void **__memptr, size_t __alignment, size_t __size)
+     throw () __attribute__ ((__nonnull__ (1))) ;
+extern void *aligned_alloc (size_t __alignment, size_t __size)
+     throw () __attribute__ ((__malloc__)) ;
+extern void abort (void) throw () __attribute__ ((__noreturn__));
+extern int atexit (void (*__func) (void)) throw () __attribute__ ((__nonnull__ (1)));
+extern "C++" int at_quick_exit (void (*__func) (void))
+     throw () __asm ("at_quick_exit") __attribute__ ((__nonnull__ (1)));
+extern int on_exit (void (*__func) (int __status, void *__arg), void *__arg)
+     throw () __attribute__ ((__nonnull__ (1)));
+extern void exit (int __status) throw () __attribute__ ((__noreturn__));
+extern void quick_exit (int __status) throw () __attribute__ ((__noreturn__));
+extern void _Exit (int __status) throw () __attribute__ ((__noreturn__));
+extern char *getenv (const char *__name) throw () __attribute__ ((__nonnull__ (1))) ;
+extern char *secure_getenv (const char *__name)
+     throw () __attribute__ ((__nonnull__ (1))) ;
+extern int putenv (char *__string) throw () __attribute__ ((__nonnull__ (1)));
+extern int setenv (const char *__name, const char *__value, int __replace)
+     throw () __attribute__ ((__nonnull__ (2)));
+extern int unsetenv (const char *__name) throw () __attribute__ ((__nonnull__ (1)));
+extern int clearenv (void) throw ();
+extern char *mktemp (char *__template) throw () __attribute__ ((__nonnull__ (1)));
+extern int mkstemp (char *__template) __attribute__ ((__nonnull__ (1))) ;
+extern int mkstemp64 (char *__template) __attribute__ ((__nonnull__ (1))) ;
+extern int mkstemps (char *__template, int __suffixlen) __attribute__ ((__nonnull__ (1))) ;
+extern int mkstemps64 (char *__template, int __suffixlen)
+     __attribute__ ((__nonnull__ (1))) ;
+extern char *mkdtemp (char *__template) throw () __attribute__ ((__nonnull__ (1))) ;
+extern int mkostemp (char *__template, int __flags) __attribute__ ((__nonnull__ (1))) ;
+extern int mkostemp64 (char *__template, int __flags) __attribute__ ((__nonnull__ (1))) ;
+extern int mkostemps (char *__template, int __suffixlen, int __flags)
+     __attribute__ ((__nonnull__ (1))) ;
+extern int mkostemps64 (char *__template, int __suffixlen, int __flags)
+     __attribute__ ((__nonnull__ (1))) ;
+extern int system (const char *__command) ;
+extern char *canonicalize_file_name (const char *__name)
+     throw () __attribute__ ((__nonnull__ (1))) ;
+extern char *realpath (const char *__restrict __name,
+         char *__restrict __resolved) throw () ;
+typedef int (*__compar_fn_t) (const void *, const void *);
+typedef __compar_fn_t comparison_fn_t;
+typedef int (*__compar_d_fn_t) (const void *, const void *, void *);
+extern void *bsearch (const void *__key, const void *__base,
+        size_t __nmemb, size_t __size, __compar_fn_t __compar)
+     __attribute__ ((__nonnull__ (1, 2, 5))) ;
+extern void qsort (void *__base, size_t __nmemb, size_t __size,
+     __compar_fn_t __compar) __attribute__ ((__nonnull__ (1, 4)));
+extern void qsort_r (void *__base, size_t __nmemb, size_t __size,
+       __compar_d_fn_t __compar, void *__arg)
+  __attribute__ ((__nonnull__ (1, 4)));
+extern int abs (int __x) throw () __attribute__ ((__const__)) ;
+extern long int labs (long int __x) throw () __attribute__ ((__const__)) ;
+__extension__ extern long long int llabs (long long int __x)
+     throw () __attribute__ ((__const__)) ;
+extern div_t div (int __numer, int __denom)
+     throw () __attribute__ ((__const__)) ;
+extern ldiv_t ldiv (long int __numer, long int __denom)
+     throw () __attribute__ ((__const__)) ;
+__extension__ extern lldiv_t lldiv (long long int __numer,
+        long long int __denom)
+     throw () __attribute__ ((__const__)) ;
+extern char *ecvt (double __value, int __ndigit, int *__restrict __decpt,
+     int *__restrict __sign) throw () __attribute__ ((__nonnull__ (3, 4))) ;
+extern char *fcvt (double __value, int __ndigit, int *__restrict __decpt,
+     int *__restrict __sign) throw () __attribute__ ((__nonnull__ (3, 4))) ;
+extern char *gcvt (double __value, int __ndigit, char *__buf)
+     throw () __attribute__ ((__nonnull__ (3))) ;
+extern char *qecvt (long double __value, int __ndigit,
+      int *__restrict __decpt, int *__restrict __sign)
+     throw () __attribute__ ((__nonnull__ (3, 4))) ;
+extern char *qfcvt (long double __value, int __ndigit,
+      int *__restrict __decpt, int *__restrict __sign)
+     throw () __attribute__ ((__nonnull__ (3, 4))) ;
+extern char *qgcvt (long double __value, int __ndigit, char *__buf)
+     throw () __attribute__ ((__nonnull__ (3))) ;
+extern int ecvt_r (double __value, int __ndigit, int *__restrict __decpt,
+     int *__restrict __sign, char *__restrict __buf,
+     size_t __len) throw () __attribute__ ((__nonnull__ (3, 4, 5)));
+extern int fcvt_r (double __value, int __ndigit, int *__restrict __decpt,
+     int *__restrict __sign, char *__restrict __buf,
+     size_t __len) throw () __attribute__ ((__nonnull__ (3, 4, 5)));
+extern int qecvt_r (long double __value, int __ndigit,
+      int *__restrict __decpt, int *__restrict __sign,
+      char *__restrict __buf, size_t __len)
+     throw () __attribute__ ((__nonnull__ (3, 4, 5)));
+extern int qfcvt_r (long double __value, int __ndigit,
+      int *__restrict __decpt, int *__restrict __sign,
+      char *__restrict __buf, size_t __len)
+     throw () __attribute__ ((__nonnull__ (3, 4, 5)));
+extern int mblen (const char *__s, size_t __n) throw ();
+extern int mbtowc (wchar_t *__restrict __pwc,
+     const char *__restrict __s, size_t __n) throw ();
+extern int wctomb (char *__s, wchar_t __wchar) throw ();
+extern size_t mbstowcs (wchar_t *__restrict __pwcs,
+   const char *__restrict __s, size_t __n) throw ();
+extern size_t wcstombs (char *__restrict __s,
+   const wchar_t *__restrict __pwcs, size_t __n)
+     throw ();
+extern int rpmatch (const char *__response) throw () __attribute__ ((__nonnull__ (1))) ;
+extern int getsubopt (char **__restrict __optionp,
+        char *const *__restrict __tokens,
+        char **__restrict __valuep)
+     throw () __attribute__ ((__nonnull__ (1, 2, 3))) ;
+extern int posix_openpt (int __oflag) ;
+extern int grantpt (int __fd) throw ();
+extern int unlockpt (int __fd) throw ();
+extern char *ptsname (int __fd) throw () ;
+extern int ptsname_r (int __fd, char *__buf, size_t __buflen)
+     throw () __attribute__ ((__nonnull__ (2)));
+extern int getpt (void);
+extern int getloadavg (double __loadavg[], int __nelem)
+     throw () __attribute__ ((__nonnull__ (1)));
+}
+extern "C++"
+{
+namespace std __attribute__ ((__visibility__ ("default")))
+{
+  using ::abs;
+  inline long
+  abs(long __i) { return __builtin_labs(__i); }
+{
+  inline long long
+  abs(long long __x) { return __builtin_llabs (__x); }
+{
+  inline constexpr double
+  abs(double __x)
+  { return __builtin_fabs(__x); }
+{
+  inline constexpr float
+  abs(float __x)
+  { return __builtin_fabsf(__x); }
+{
+  inline constexpr long double
+  abs(long double __x)
+  { return __builtin_fabsl(__x); }
+{
+  inline constexpr __int128
+  abs(__int128 __x) { return __x >= 0 ? __x : -__x; }
+{
+  inline constexpr
+  __float128
+  abs(__float128 __x)
+  { return __x < 0 ? -__x : __x; }
+{
+}
+}
+extern "C++"
+{
+namespace std __attribute__ ((__visibility__ ("default")))
+{
+  using ::div_t;
+  using ::ldiv_t;
+  using ::abort;
+  using ::atexit;
+  using ::at_quick_exit;
+  using ::atof;
+  using ::atoi;
+  using ::atol;
+  using ::bsearch;
+  using ::calloc;
+  using ::div;
+  using ::exit;
+  using ::free;
+  using ::getenv;
+  using ::labs;
+  using ::ldiv;
+  using ::malloc;
+  using ::mblen;
+  using ::mbstowcs;
+  using ::mbtowc;
+  using ::qsort;
+  using ::quick_exit;
+  using ::rand;
+  using ::realloc;
+  using ::srand;
+  using ::strtod;
+  using ::strtol;
+  using ::strtoul;
+  using ::system;
+  using ::wcstombs;
+  using ::wctomb;
+  inline ldiv_t
+  div(long __i, long __j) { return ldiv(__i, __j); }
+{
+}
+namespace __gnu_cxx __attribute__ ((__visibility__ ("default")))
+{
+  using ::lldiv_t;
+  using ::_Exit;
+  using ::llabs;
+  inline lldiv_t
+  div(long long __n, long long __d)
+  { lldiv_t __q; __q.quot = __n / __d; __q.rem = __n % __d; return __q; }
+{
+  using ::lldiv;
+  using ::atoll;
+  using ::strtoll;
+  using ::strtoull;
+  using ::strtof;
+  using ::strtold;
+}
+namespace std
+{
+  using ::__gnu_cxx::lldiv_t;
+  using ::__gnu_cxx::_Exit;
+  using ::__gnu_cxx::llabs;
+  using ::__gnu_cxx::div;
+  using ::__gnu_cxx::lldiv;
+  using ::__gnu_cxx::atoll;
+  using ::__gnu_cxx::strtof;
+  using ::__gnu_cxx::strtoll;
+  using ::__gnu_cxx::strtoull;
+  using ::__gnu_cxx::strtold;
+}
+}
+using std::abort;
+using std::atexit;
+using std::exit;
+  using std::at_quick_exit;
+  using std::quick_exit;
+using std::div_t;
+using std::ldiv_t;
+using std::abs;
+using std::atof;
+using std::atoi;
+using std::atol;
+using std::bsearch;
+using std::calloc;
+using std::div;
+using std::free;
+using std::getenv;
+using std::labs;
+using std::ldiv;
+using std::malloc;
+using std::mblen;
+using std::mbstowcs;
+using std::mbtowc;
+using std::qsort;
+using std::rand;
+using std::realloc;
+using std::srand;
+using std::strtod;
+using std::strtol;
+using std::strtoul;
+using std::system;
+using std::wcstombs;
+using std::wctomb;
+typedef long int ptrdiff_t;
+typedef long unsigned int size_t;
+typedef long unsigned int rsize_t;
+typedef long unsigned int size_t;
+struct timex
+{
+  unsigned int modes;
+  __syscall_slong_t offset;
+  __syscall_slong_t freq;
+  __syscall_slong_t maxerror;
+  __syscall_slong_t esterror;
+  int status;
+  __syscall_slong_t constant;
+  __syscall_slong_t precision;
+  __syscall_slong_t tolerance;
+  struct timeval time;
+  __syscall_slong_t tick;
+  __syscall_slong_t ppsfreq;
+  __syscall_slong_t jitter;
+  int shift;
+  __syscall_slong_t stabil;
+  __syscall_slong_t jitcnt;
+  __syscall_slong_t calcnt;
+  __syscall_slong_t errcnt;
+  __syscall_slong_t stbcnt;
+  int tai;
+  int :32; int :32; int :32; int :32;
+  int :32; int :32; int :32; int :32;
+  int :32; int :32; int :32;
+};
+extern "C" 
+{
+extern int clock_adjtime (__clockid_t __clock_id, struct timex *__utx) throw ();
+}
+struct tm
+{
+  int tm_sec;
+  int tm_min;
+  int tm_hour;
+  int tm_mday;
+  int tm_mon;
+  int tm_year;
+  int tm_wday;
+  int tm_yday;
+  int tm_isdst;
+  long int tm_gmtoff;
+  const char *tm_zone;
+};
+struct itimerspec
+  
+{
+    struct timespec it_interval;
+    struct timespec it_value;
+  };
+struct sigevent;
+extern "C" 
+{
+extern clock_t clock (void) throw ();
+extern time_t time (time_t *__timer) throw ();
+extern double difftime (time_t __time1, time_t __time0)
+     throw () __attribute__ ((__const__));
+extern time_t mktime (struct tm *__tp) throw ();
+extern size_t strftime (char *__restrict __s, size_t __maxsize,
+   const char *__restrict __format,
+   const struct tm *__restrict __tp) throw ();
+extern char *strptime (const char *__restrict __s,
+         const char *__restrict __fmt, struct tm *__tp)
+     throw ();
+extern size_t strftime_l (char *__restrict __s, size_t __maxsize,
+     const char *__restrict __format,
+     const struct tm *__restrict __tp,
+     locale_t __loc) throw ();
+extern char *strptime_l (const char *__restrict __s,
+    const char *__restrict __fmt, struct tm *__tp,
+    locale_t __loc) throw ();
+extern struct tm *gmtime (const time_t *__timer) throw ();
+extern struct tm *localtime (const time_t *__timer) throw ();
+extern struct tm *gmtime_r (const time_t *__restrict __timer,
+       struct tm *__restrict __tp) throw ();
+extern struct tm *localtime_r (const time_t *__restrict __timer,
+          struct tm *__restrict __tp) throw ();
+extern char *asctime (const struct tm *__tp) throw ();
+extern char *ctime (const time_t *__timer) throw ();
+extern char *asctime_r (const struct tm *__restrict __tp,
+   char *__restrict __buf) throw ();
+extern char *ctime_r (const time_t *__restrict __timer,
+        char *__restrict __buf) throw ();
+extern char *__tzname[2];
+extern int __daylight;
+extern long int __timezone;
+extern char *tzname[2];
+extern void tzset (void) throw ();
+extern int daylight;
+extern long int timezone;
+extern time_t timegm (struct tm *__tp) throw ();
+extern time_t timelocal (struct tm *__tp) throw ();
+extern int dysize (int __year) throw () __attribute__ ((__const__));
+extern int nanosleep (const struct timespec *__requested_time,
+        struct timespec *__remaining);
+extern int clock_getres (clockid_t __clock_id, struct timespec *__res) throw ();
+extern int clock_gettime (clockid_t __clock_id, struct timespec *__tp) throw ();
+extern int clock_settime (clockid_t __clock_id, const struct timespec *__tp)
+     throw ();
+extern int clock_nanosleep (clockid_t __clock_id, int __flags,
+       const struct timespec *__req,
+       struct timespec *__rem);
+extern int clock_getcpuclockid (pid_t __pid, clockid_t *__clock_id) throw ();
+extern int timer_create (clockid_t __clock_id,
+    struct sigevent *__restrict __evp,
+    timer_t *__restrict __timerid) throw ();
+extern int timer_delete (timer_t __timerid) throw ();
+extern int timer_settime (timer_t __timerid, int __flags,
+     const struct itimerspec *__restrict __value,
+     struct itimerspec *__restrict __ovalue) throw ();
+extern int timer_gettime (timer_t __timerid, struct itimerspec *__value)
+     throw ();
+extern int timer_getoverrun (timer_t __timerid) throw ();
+extern int timespec_get (struct timespec *__ts, int __base)
+     throw () __attribute__ ((__nonnull__ (1)));
+extern int getdate_err;
+extern struct tm *getdate (const char *__string);
+extern int getdate_r (const char *__restrict __string,
+        struct tm *__restrict __resbufp);
+}
+extern "C" 
+{
+typedef long unsigned int size_t;
+extern void *memcpy (void *__restrict __dest, const void *__restrict __src,
+       size_t __n) throw () __attribute__ ((__nonnull__ (1, 2)));
+extern void *memmove (void *__dest, const void *__src, size_t __n)
+     throw () __attribute__ ((__nonnull__ (1, 2)));
+extern void *memccpy (void *__restrict __dest, const void *__restrict __src,
+        int __c, size_t __n)
+     throw () __attribute__ ((__nonnull__ (1, 2)));
+extern void *memset (void *__s, int __c, size_t __n) throw () __attribute__ ((__nonnull__ (1)));
+extern int memcmp (const void *__s1, const void *__s2, size_t __n)
+     throw () __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+extern "C++"
+{
+extern void *memchr (void *__s, int __c, size_t __n)
+      throw () __asm ("memchr") __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+extern const void *memchr (const void *__s, int __c, size_t __n)
+      throw () __asm ("memchr") __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+}
+extern "C++" void *rawmemchr (void *__s, int __c)
+     throw () __asm ("rawmemchr") __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+extern "C++" const void *rawmemchr (const void *__s, int __c)
+     throw () __asm ("rawmemchr") __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+extern "C++" void *memrchr (void *__s, int __c, size_t __n)
+      throw () __asm ("memrchr") __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+extern "C++" const void *memrchr (const void *__s, int __c, size_t __n)
+      throw () __asm ("memrchr") __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+extern char *strcpy (char *__restrict __dest, const char *__restrict __src)
+     throw () __attribute__ ((__nonnull__ (1, 2)));
+extern char *strncpy (char *__restrict __dest,
+        const char *__restrict __src, size_t __n)
+     throw () __attribute__ ((__nonnull__ (1, 2)));
+extern char *strcat (char *__restrict __dest, const char *__restrict __src)
+     throw () __attribute__ ((__nonnull__ (1, 2)));
+extern char *strncat (char *__restrict __dest, const char *__restrict __src,
+        size_t __n) throw () __attribute__ ((__nonnull__ (1, 2)));
+extern int strcmp (const char *__s1, const char *__s2)
+     throw () __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+extern int strncmp (const char *__s1, const char *__s2, size_t __n)
+     throw () __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+extern int strcoll (const char *__s1, const char *__s2)
+     throw () __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+extern size_t strxfrm (char *__restrict __dest,
+         const char *__restrict __src, size_t __n)
+     throw () __attribute__ ((__nonnull__ (2)));
+extern int strcoll_l (const char *__s1, const char *__s2, locale_t __l)
+     throw () __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2, 3)));
+extern size_t strxfrm_l (char *__dest, const char *__src, size_t __n,
+    locale_t __l) throw () __attribute__ ((__nonnull__ (2, 4)));
+extern char *strdup (const char *__s)
+     throw () __attribute__ ((__malloc__)) __attribute__ ((__nonnull__ (1)));
+extern char *strndup (const char *__string, size_t __n)
+     throw () __attribute__ ((__malloc__)) __attribute__ ((__nonnull__ (1)));
+extern "C++"
+{
+extern char *strchr (char *__s, int __c)
+     throw () __asm ("strchr") __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+extern const char *strchr (const char *__s, int __c)
+     throw () __asm ("strchr") __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+}
+extern "C++"
+{
+extern char *strrchr (char *__s, int __c)
+     throw () __asm ("strrchr") __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+extern const char *strrchr (const char *__s, int __c)
+     throw () __asm ("strrchr") __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+}
+extern "C++" char *strchrnul (char *__s, int __c)
+     throw () __asm ("strchrnul") __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+extern "C++" const char *strchrnul (const char *__s, int __c)
+     throw () __asm ("strchrnul") __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+extern size_t strcspn (const char *__s, const char *__reject)
+     throw () __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+extern size_t strspn (const char *__s, const char *__accept)
+     throw () __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+extern "C++"
+{
+extern char *strpbrk (char *__s, const char *__accept)
+     throw () __asm ("strpbrk") __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+extern const char *strpbrk (const char *__s, const char *__accept)
+     throw () __asm ("strpbrk") __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+}
+extern "C++"
+{
+extern char *strstr (char *__haystack, const char *__needle)
+     throw () __asm ("strstr") __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+extern const char *strstr (const char *__haystack, const char *__needle)
+     throw () __asm ("strstr") __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+}
+extern char *strtok (char *__restrict __s, const char *__restrict __delim)
+     throw () __attribute__ ((__nonnull__ (2)));
+extern char *__strtok_r (char *__restrict __s,
+    const char *__restrict __delim,
+    char **__restrict __save_ptr)
+     throw () __attribute__ ((__nonnull__ (2, 3)));
+extern char *strtok_r (char *__restrict __s, const char *__restrict __delim,
+         char **__restrict __save_ptr)
+     throw () __attribute__ ((__nonnull__ (2, 3)));
+extern "C++" char *strcasestr (char *__haystack, const char *__needle)
+     throw () __asm ("strcasestr") __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+extern "C++" const char *strcasestr (const char *__haystack,
+         const char *__needle)
+     throw () __asm ("strcasestr") __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+extern void *memmem (const void *__haystack, size_t __haystacklen,
+       const void *__needle, size_t __needlelen)
+     throw () __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 3)));
+extern void *__mempcpy (void *__restrict __dest,
+   const void *__restrict __src, size_t __n)
+     throw () __attribute__ ((__nonnull__ (1, 2)));
+extern void *mempcpy (void *__restrict __dest,
+        const void *__restrict __src, size_t __n)
+     throw () __attribute__ ((__nonnull__ (1, 2)));
+extern size_t strlen (const char *__s)
+     throw () __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+extern size_t strnlen (const char *__string, size_t __maxlen)
+     throw () __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+extern char *strerror (int __errnum) throw ();
+extern char *strerror_r (int __errnum, char *__buf, size_t __buflen)
+     throw () __attribute__ ((__nonnull__ (2))) ;
+extern char *strerror_l (int __errnum, locale_t __l) throw ();
+typedef long unsigned int size_t;
+extern "C" 
+{
+extern int bcmp (const void *__s1, const void *__s2, size_t __n)
+     throw () __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+extern void bcopy (const void *__src, void *__dest, size_t __n)
+  throw () __attribute__ ((__nonnull__ (1, 2)));
+extern void bzero (void *__s, size_t __n) throw () __attribute__ ((__nonnull__ (1)));
+extern char *index (const char *__s, int __c)
+     throw () __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+extern char *rindex (const char *__s, int __c)
+     throw () __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+extern int ffs (int __i) throw () __attribute__ ((__const__));
+extern int ffsl (long int __l) throw () __attribute__ ((__const__));
+__extension__ extern int ffsll (long long int __ll)
+     throw () __attribute__ ((__const__));
+extern int strcasecmp (const char *__s1, const char *__s2)
+     throw () __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+extern int strncasecmp (const char *__s1, const char *__s2, size_t __n)
+     throw () __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+extern int strcasecmp_l (const char *__s1, const char *__s2, locale_t __loc)
+     throw () __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2, 3)));
+extern int strncasecmp_l (const char *__s1, const char *__s2,
+     size_t __n, locale_t __loc)
+     throw () __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2, 4)));
+}
+extern void explicit_bzero (void *__s, size_t __n) throw () __attribute__ ((__nonnull__ (1)));
+extern char *strsep (char **__restrict __stringp,
+       const char *__restrict __delim)
+     throw () __attribute__ ((__nonnull__ (1, 2)));
+extern char *strsignal (int __sig) throw ();
+extern char *__stpcpy (char *__restrict __dest, const char *__restrict __src)
+     throw () __attribute__ ((__nonnull__ (1, 2)));
+extern char *stpcpy (char *__restrict __dest, const char *__restrict __src)
+     throw () __attribute__ ((__nonnull__ (1, 2)));
+extern char *__stpncpy (char *__restrict __dest,
+   const char *__restrict __src, size_t __n)
+     throw () __attribute__ ((__nonnull__ (1, 2)));
+extern char *stpncpy (char *__restrict __dest,
+        const char *__restrict __src, size_t __n)
+     throw () __attribute__ ((__nonnull__ (1, 2)));
+extern int strverscmp (const char *__s1, const char *__s2)
+     throw () __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+extern char *strfry (char *__string) throw () __attribute__ ((__nonnull__ (1)));
+extern void *memfrob (void *__s, size_t __n) throw () __attribute__ ((__nonnull__ (1)));
+extern "C++" char *basename (char *__filename)
+     throw () __asm ("basename") __attribute__ ((__nonnull__ (1)));
+extern "C++" const char *basename (const char *__filename)
+     throw () __asm ("basename") __attribute__ ((__nonnull__ (1)));
+}
+typedef __uint8_t uint8_t;
+typedef __uint16_t uint16_t;
+typedef __uint32_t uint32_t;
+typedef __uint64_t uint64_t;
+typedef __int_least8_t int_least8_t;
+typedef __int_least16_t int_least16_t;
+typedef __int_least32_t int_least32_t;
+typedef __int_least64_t int_least64_t;
+typedef __uint_least8_t uint_least8_t;
+typedef __uint_least16_t uint_least16_t;
+typedef __uint_least32_t uint_least32_t;
+typedef __uint_least64_t uint_least64_t;
+typedef signed char int_fast8_t;
+typedef long int int_fast16_t;
+typedef long int int_fast32_t;
+typedef long int int_fast64_t;
+typedef unsigned char uint_fast8_t;
+typedef unsigned long int uint_fast16_t;
+typedef unsigned long int uint_fast32_t;
+typedef unsigned long int uint_fast64_t;
+typedef long int intptr_t;
+typedef unsigned long int uintptr_t;
+typedef __intmax_t intmax_t;
+typedef __uintmax_t uintmax_t;
+extern "C" 
+{
+enum
+{
+  _ISupper = ((0) < 8 ? ((1 << (0)) << 8) : ((1 << (0)) >> 8)),
+  _ISlower = ((1) < 8 ? ((1 << (1)) << 8) : ((1 << (1)) >> 8)),
+  _ISalpha = ((2) < 8 ? ((1 << (2)) << 8) : ((1 << (2)) >> 8)),
+  _ISdigit = ((3) < 8 ? ((1 << (3)) << 8) : ((1 << (3)) >> 8)),
+  _ISxdigit = ((4) < 8 ? ((1 << (4)) << 8) : ((1 << (4)) >> 8)),
+  _ISspace = ((5) < 8 ? ((1 << (5)) << 8) : ((1 << (5)) >> 8)),
+  _ISprint = ((6) < 8 ? ((1 << (6)) << 8) : ((1 << (6)) >> 8)),
+  _ISgraph = ((7) < 8 ? ((1 << (7)) << 8) : ((1 << (7)) >> 8)),
+  _ISblank = ((8) < 8 ? ((1 << (8)) << 8) : ((1 << (8)) >> 8)),
+  _IScntrl = ((9) < 8 ? ((1 << (9)) << 8) : ((1 << (9)) >> 8)),
+  _ISpunct = ((10) < 8 ? ((1 << (10)) << 8) : ((1 << (10)) >> 8)),
+  _ISalnum = ((11) < 8 ? ((1 << (11)) << 8) : ((1 << (11)) >> 8))
+};
+extern const unsigned short int **__ctype_b_loc (void)
+     throw () __attribute__ ((__const__));
+extern const __int32_t **__ctype_tolower_loc (void)
+     throw () __attribute__ ((__const__));
+extern const __int32_t **__ctype_toupper_loc (void)
+     throw () __attribute__ ((__const__));
+extern int isalnum (int) throw ();
+extern int isalpha (int) throw ();
+extern int iscntrl (int) throw ();
+extern int isdigit (int) throw ();
+extern int islower (int) throw ();
+extern int isgraph (int) throw ();
+extern int isprint (int) throw ();
+extern int ispunct (int) throw ();
+extern int isspace (int) throw ();
+extern int isupper (int) throw ();
+extern int isxdigit (int) throw ();
+extern int tolower (int __c) throw ();
+extern int toupper (int __c) throw ();
+extern int isblank (int) throw ();
+extern int isctype (int __c, int __mask) throw ();
+extern int isascii (int __c) throw ();
+extern int toascii (int __c) throw ();
+extern int _toupper (int) throw ();
+extern int _tolower (int) throw ();
+extern int isalnum_l (int, locale_t) throw ();
+extern int isalpha_l (int, locale_t) throw ();
+extern int iscntrl_l (int, locale_t) throw ();
+extern int isdigit_l (int, locale_t) throw ();
+extern int islower_l (int, locale_t) throw ();
+extern int isgraph_l (int, locale_t) throw ();
+extern int isprint_l (int, locale_t) throw ();
+extern int ispunct_l (int, locale_t) throw ();
+extern int isspace_l (int, locale_t) throw ();
+extern int isupper_l (int, locale_t) throw ();
+extern int isxdigit_l (int, locale_t) throw ();
+extern int isblank_l (int, locale_t) throw ();
+extern int __tolower_l (int __c, locale_t __l) throw ();
+extern int tolower_l (int __c, locale_t __l) throw ();
+extern int __toupper_l (int __c, locale_t __l) throw ();
+extern int toupper_l (int __c, locale_t __l) throw ();
+}
+extern "C" 
+{
+struct flock
+  
+{
+    short int l_type;
+    short int l_whence;
+    __off_t l_start;
+    __off_t l_len;
+    __pid_t l_pid;
+  };
+struct flock64
+  
+{
+    short int l_type;
+    short int l_whence;
+    __off64_t l_start;
+    __off64_t l_len;
+    __pid_t l_pid;
+  };
+typedef long unsigned int size_t;
+struct iovec
+  
+{
+    void *iov_base;
+    size_t iov_len;
+  };
+enum __pid_type
+  
+{
+    F_OWNER_TID = 0,
+    F_OWNER_PID,
+    F_OWNER_PGRP,
+    F_OWNER_GID = F_OWNER_PGRP
+  };
+struct f_owner_ex
+  
+{
+    enum __pid_type type;
+    __pid_t pid;
+  };
+struct file_handle
+{
+  unsigned int handle_bytes;
+  int handle_type;
+  unsigned char f_handle[0];
+};
+extern "C" 
+{
+extern __ssize_t readahead (int __fd, __off64_t __offset, size_t __count)
+    throw ();
+extern int sync_file_range (int __fd, __off64_t __offset, __off64_t __count,
+       unsigned int __flags);
+extern __ssize_t vmsplice (int __fdout, const struct iovec *__iov,
+      size_t __count, unsigned int __flags);
+extern __ssize_t splice (int __fdin, __off64_t *__offin, int __fdout,
+    __off64_t *__offout, size_t __len,
+    unsigned int __flags);
+extern __ssize_t tee (int __fdin, int __fdout, size_t __len,
+        unsigned int __flags);
+extern int fallocate (int __fd, int __mode, __off_t __offset, __off_t __len);
+extern int fallocate64 (int __fd, int __mode, __off64_t __offset,
+   __off64_t __len);
+extern int name_to_handle_at (int __dfd, const char *__name,
+         struct file_handle *__handle, int *__mnt_id,
+         int __flags) throw ();
+extern int open_by_handle_at (int __mountdirfd, struct file_handle *__handle,
+         int __flags);
+}
+struct stat
+  
+{
+    __dev_t st_dev;
+    __ino_t st_ino;
+    __nlink_t st_nlink;
+    __mode_t st_mode;
+    __uid_t st_uid;
+    __gid_t st_gid;
+    int __pad0;
+    __dev_t st_rdev;
+    __off_t st_size;
+    __blksize_t st_blksize;
+    __blkcnt_t st_blocks;
+    struct timespec st_atim;
+    struct timespec st_mtim;
+    struct timespec st_ctim;
+    __syscall_slong_t __glibc_reserved[3];
+  };
+struct stat64
+  
+{
+    __dev_t st_dev;
+    __ino64_t st_ino;
+    __nlink_t st_nlink;
+    __mode_t st_mode;
+    __uid_t st_uid;
+    __gid_t st_gid;
+    int __pad0;
+    __dev_t st_rdev;
+    __off_t st_size;
+    __blksize_t st_blksize;
+    __blkcnt64_t st_blocks;
+    struct timespec st_atim;
+    struct timespec st_mtim;
+    struct timespec st_ctim;
+    __syscall_slong_t __glibc_reserved[3];
+  };
+extern int fcntl (int __fd, int __cmd, ...);
+extern int fcntl64 (int __fd, int __cmd, ...);
+extern int open (const char *__file, int __oflag, ...) __attribute__ ((__nonnull__ (1)));
+extern int open64 (const char *__file, int __oflag, ...) __attribute__ ((__nonnull__ (1)));
+extern int openat (int __fd, const char *__file, int __oflag, ...)
+     __attribute__ ((__nonnull__ (2)));
+extern int openat64 (int __fd, const char *__file, int __oflag, ...)
+     __attribute__ ((__nonnull__ (2)));
+extern int creat (const char *__file, mode_t __mode) __attribute__ ((__nonnull__ (1)));
+extern int creat64 (const char *__file, mode_t __mode) __attribute__ ((__nonnull__ (1)));
+extern int lockf (int __fd, int __cmd, off_t __len);
+extern int lockf64 (int __fd, int __cmd, off64_t __len);
+extern int posix_fadvise (int __fd, off_t __offset, off_t __len,
+     int __advise) throw ();
+extern int posix_fadvise64 (int __fd, off64_t __offset, off64_t __len,
+       int __advise) throw ();
+extern int posix_fallocate (int __fd, off_t __offset, off_t __len);
+extern int posix_fallocate64 (int __fd, off64_t __offset, off64_t __len);
+}
+extern "C" 
+{
+extern int stat (const char *__restrict __file,
+   struct stat *__restrict __buf) throw () __attribute__ ((__nonnull__ (1, 2)));
+extern int fstat (int __fd, struct stat *__buf) throw () __attribute__ ((__nonnull__ (2)));
+extern int stat64 (const char *__restrict __file,
+     struct stat64 *__restrict __buf) throw () __attribute__ ((__nonnull__ (1, 2)));
+extern int fstat64 (int __fd, struct stat64 *__buf) throw () __attribute__ ((__nonnull__ (2)));
+extern int fstatat (int __fd, const char *__restrict __file,
+      struct stat *__restrict __buf, int __flag)
+     throw () __attribute__ ((__nonnull__ (2, 3)));
+extern int fstatat64 (int __fd, const char *__restrict __file,
+        struct stat64 *__restrict __buf, int __flag)
+     throw () __attribute__ ((__nonnull__ (2, 3)));
+extern int lstat (const char *__restrict __file,
+    struct stat *__restrict __buf) throw () __attribute__ ((__nonnull__ (1, 2)));
+extern int lstat64 (const char *__restrict __file,
+      struct stat64 *__restrict __buf)
+     throw () __attribute__ ((__nonnull__ (1, 2)));
+extern int chmod (const char *__file, __mode_t __mode)
+     throw () __attribute__ ((__nonnull__ (1)));
+extern int lchmod (const char *__file, __mode_t __mode)
+     throw () __attribute__ ((__nonnull__ (1)));
+extern int fchmod (int __fd, __mode_t __mode) throw ();
+extern int fchmodat (int __fd, const char *__file, __mode_t __mode,
+       int __flag)
+     throw () __attribute__ ((__nonnull__ (2))) ;
+extern __mode_t umask (__mode_t __mask) throw ();
+extern __mode_t getumask (void) throw ();
+extern int mkdir (const char *__path, __mode_t __mode)
+     throw () __attribute__ ((__nonnull__ (1)));
+extern int mkdirat (int __fd, const char *__path, __mode_t __mode)
+     throw () __attribute__ ((__nonnull__ (2)));
+extern int mknod (const char *__path, __mode_t __mode, __dev_t __dev)
+     throw () __attribute__ ((__nonnull__ (1)));
+extern int mknodat (int __fd, const char *__path, __mode_t __mode,
+      __dev_t __dev) throw () __attribute__ ((__nonnull__ (2)));
+extern int mkfifo (const char *__path, __mode_t __mode)
+     throw () __attribute__ ((__nonnull__ (1)));
+extern int mkfifoat (int __fd, const char *__path, __mode_t __mode)
+     throw () __attribute__ ((__nonnull__ (2)));
+extern int utimensat (int __fd, const char *__path,
+        const struct timespec __times[2],
+        int __flags)
+     throw () __attribute__ ((__nonnull__ (2)));
+extern int futimens (int __fd, const struct timespec __times[2]) throw ();
+extern int __fxstat (int __ver, int __fildes, struct stat *__stat_buf)
+     throw () __attribute__ ((__nonnull__ (3)));
+extern int __xstat (int __ver, const char *__filename,
+      struct stat *__stat_buf) throw () __attribute__ ((__nonnull__ (2, 3)));
+extern int __lxstat (int __ver, const char *__filename,
+       struct stat *__stat_buf) throw () __attribute__ ((__nonnull__ (2, 3)));
+extern int __fxstatat (int __ver, int __fildes, const char *__filename,
+         struct stat *__stat_buf, int __flag)
+     throw () __attribute__ ((__nonnull__ (3, 4)));
+extern int __fxstat64 (int __ver, int __fildes, struct stat64 *__stat_buf)
+     throw () __attribute__ ((__nonnull__ (3)));
+extern int __xstat64 (int __ver, const char *__filename,
+        struct stat64 *__stat_buf) throw () __attribute__ ((__nonnull__ (2, 3)));
+extern int __lxstat64 (int __ver, const char *__filename,
+         struct stat64 *__stat_buf) throw () __attribute__ ((__nonnull__ (2, 3)));
+extern int __fxstatat64 (int __ver, int __fildes, const char *__filename,
+    struct stat64 *__stat_buf, int __flag)
+     throw () __attribute__ ((__nonnull__ (3, 4)));
+extern int __xmknod (int __ver, const char *__path, __mode_t __mode,
+       __dev_t *__dev) throw () __attribute__ ((__nonnull__ (2, 4)));
+extern int __xmknodat (int __ver, int __fd, const char *__path,
+         __mode_t __mode, __dev_t *__dev)
+     throw () __attribute__ ((__nonnull__ (3, 5)));
+typedef __signed__ char __s8;
+typedef unsigned char __u8;
+typedef __signed__ short __s16;
+typedef unsigned short __u16;
+typedef __signed__ int __s32;
+typedef unsigned int __u32;
+__extension__ typedef __signed__ long long __s64;
+__extension__ typedef unsigned long long __u64;
+typedef struct 
+{
+ unsigned long fds_bits[1024 / (8 * sizeof(long))];
+} __kernel_fd_set;
+typedef void (*__kernel_sighandler_t)(int);
+typedef int __kernel_key_t;
+typedef int __kernel_mqd_t;
+typedef unsigned short __kernel_old_uid_t;
+typedef unsigned short __kernel_old_gid_t;
+typedef unsigned long __kernel_old_dev_t;
+typedef long __kernel_long_t;
+typedef unsigned long __kernel_ulong_t;
+typedef __kernel_ulong_t __kernel_ino_t;
+typedef unsigned int __kernel_mode_t;
+typedef int __kernel_pid_t;
+typedef int __kernel_ipc_pid_t;
+typedef unsigned int __kernel_uid_t;
+typedef unsigned int __kernel_gid_t;
+typedef __kernel_long_t __kernel_suseconds_t;
+typedef int __kernel_daddr_t;
+typedef unsigned int __kernel_uid32_t;
+typedef unsigned int __kernel_gid32_t;
+typedef __kernel_ulong_t __kernel_size_t;
+typedef __kernel_long_t __kernel_ssize_t;
+typedef __kernel_long_t __kernel_ptrdiff_t;
+typedef struct 
+{
+ int val[2];
+} __kernel_fsid_t;
+typedef __kernel_long_t __kernel_off_t;
+typedef long long __kernel_loff_t;
+typedef __kernel_long_t __kernel_time_t;
+typedef long long __kernel_time64_t;
+typedef __kernel_long_t __kernel_clock_t;
+typedef int __kernel_timer_t;
+typedef int __kernel_clockid_t;
+typedef char * __kernel_caddr_t;
+typedef unsigned short __kernel_uid16_t;
+typedef unsigned short __kernel_gid16_t;
+typedef __u16 __le16;
+typedef __u16 __be16;
+typedef __u32 __le32;
+typedef __u32 __be32;
+typedef __u64 __le64;
+typedef __u64 __be64;
+typedef __u16 __sum16;
+typedef __u32 __wsum;
+typedef unsigned __poll_t;
+struct statx_timestamp 
+{
+ __s64 tv_sec;
+ __u32 tv_nsec;
+ __s32 __reserved;
+};
+struct statx 
+{
+ __u32 stx_mask;
+ __u32 stx_blksize;
+ __u64 stx_attributes;
+ __u32 stx_nlink;
+ __u32 stx_uid;
+ __u32 stx_gid;
+ __u16 stx_mode;
+ __u16 __spare0[1];
+ __u64 stx_ino;
+ __u64 stx_size;
+ __u64 stx_blocks;
+ __u64 stx_attributes_mask;
+ struct statx_timestamp stx_atime;
+ struct statx_timestamp stx_btime;
+ struct statx_timestamp stx_ctime;
+ struct statx_timestamp stx_mtime;
+ __u32 stx_rdev_major;
+ __u32 stx_rdev_minor;
+ __u32 stx_dev_major;
+ __u32 stx_dev_minor;
+ __u64 __spare2[14];
+};
+extern "C" 
+{
+int statx (int __dirfd, const char *__restrict __path, int __flags,
+           unsigned int __mask, struct statx *__restrict __buf)
+  throw () __attribute__ ((__nonnull__ (2, 5)));
+}
+}
+extern "C++" 
+{
+namespace std
+{
+  class exception
+  
+{
+  public:
+    exception() noexcept { }
+{
+    virtual ~exception() noexcept;
+    exception(const exception&) = default;
+    exception& operator=(const exception&) = default;
+    exception(exception&&) = default;
+    exception& operator=(exception&&) = default;
+    virtual const char*
+    what() const noexcept;
+  };
+}
+}
+extern "C++" 
+{
+namespace std
+{
+  class bad_exception : public exception
+  
+{
+  public:
+    bad_exception() noexcept { }
+{
+    virtual ~bad_exception() noexcept;
+    virtual const char*
+    what() const noexcept;
+  };
+  typedef void (*terminate_handler) ();
+  typedef void (*unexpected_handler) ();
+  terminate_handler set_terminate(terminate_handler) noexcept;
+  terminate_handler get_terminate() noexcept;
+  void terminate() noexcept __attribute__ ((__noreturn__));
+  unexpected_handler set_unexpected(unexpected_handler) noexcept;
+  unexpected_handler get_unexpected() noexcept;
+  void unexpected() __attribute__ ((__noreturn__));
+  bool uncaught_exception() noexcept __attribute__ ((__pure__));
+  int uncaught_exceptions() noexcept __attribute__ ((__pure__));
+}
+namespace __gnu_cxx
+{
+  void __verbose_terminate_handler();
+}
+}
+typedef long int ptrdiff_t;
+typedef long unsigned int size_t;
+typedef long unsigned int rsize_t;
+namespace std
+{
+  class type_info;
+}
+namespace __cxxabiv1
+{
+  struct __cxa_refcounted_exception;
+  extern "C"
+    
+{
+      void*
+      __cxa_allocate_exception(size_t) noexcept;
+      void
+      __cxa_free_exception(void*) noexcept;
+      __cxa_refcounted_exception*
+      __cxa_init_primary_exception(void *object, std::type_info *tinfo,
+                void ( *dest) (void *)) noexcept;
+    }
+}
+namespace std
+{
+  size_t
+  _Hash_bytes(const void* __ptr, size_t __len, size_t __seed);
+  size_t
+  _Fnv_hash_bytes(const void* __ptr, size_t __len, size_t __seed);
+}
+extern "C++" 
+{
+namespace __cxxabiv1
+{
+  class __class_type_info;
+}
+namespace std
+{
+  class type_info
+  
+{
+  public:
+    virtual ~type_info();
+    const char* name() const noexcept
+    { return __name[0] == '*' ? __name + 1 : __name; }
+{
+    bool before(const type_info& __arg) const noexcept
+    { return (__name[0] == '*' && __arg.__name[0] == '*')
+{
+ ? __name < __arg.__name
+ : __builtin_strcmp (__name, __arg.__name) < 0; }
+    bool operator==(const type_info& __arg) const noexcept
+    
+{
+      return ((__name == __arg.__name)
+       || (__name[0] != '*' &&
+    __builtin_strcmp (__name, __arg.__name) == 0));
+    }
+    bool operator!=(const type_info& __arg) const noexcept
+    { return !operator==(__arg); }
+{
+    size_t hash_code() const noexcept
+    
+{
+      return _Hash_bytes(name(), __builtin_strlen(name()),
+    static_cast<size_t>(0xc70f6907UL));
+    }
+    virtual bool __is_pointer_p() const;
+    virtual bool __is_function_p() const;
+    virtual bool __do_catch(const type_info *__thr_type, void **__thr_obj,
+       unsigned __outer) const;
+    virtual bool __do_upcast(const __cxxabiv1::__class_type_info *__target,
+        void **__obj_ptr) const;
+  protected:
+    const char *__name;
+    explicit type_info(const char *__n): __name(__n) { }
+{
+  private:
+    type_info& operator=(const type_info&);
+    type_info(const type_info&);
+  };
+  class bad_cast : public exception
+  
+{
+  public:
+    bad_cast() noexcept { }
+{
+    virtual ~bad_cast() noexcept;
+    virtual const char* what() const noexcept;
+  };
+  class bad_typeid : public exception
+  
+{
+  public:
+    bad_typeid () noexcept { }
+{
+    virtual ~bad_typeid() noexcept;
+    virtual const char* what() const noexcept;
+  };
+}
+}
+extern "C++" 
+{
+namespace std
+{
+  class type_info;
+  namespace __exception_ptr
+  
+{
+    class exception_ptr;
+  }
+  using __exception_ptr::exception_ptr;
+  exception_ptr current_exception() noexcept;
+  template<typename _Ex>
+  exception_ptr make_exception_ptr(_Ex) noexcept;
+  void rethrow_exception(exception_ptr) __attribute__ ((__noreturn__));
+  namespace __exception_ptr
+  
+{
+    using std::rethrow_exception;
+    class exception_ptr
+    
+{
+      void* _M_exception_object;
+      explicit exception_ptr(void* __e) noexcept;
+      void _M_addref() noexcept;
+      void _M_release() noexcept;
+      void *_M_get() const noexcept __attribute__ ((__pure__));
+      friend exception_ptr std::current_exception() noexcept;
+      friend void std::rethrow_exception(exception_ptr);
+      template<typename _Ex>
+      friend exception_ptr std::make_exception_ptr(_Ex) noexcept;
+    public:
+      exception_ptr() noexcept;
+      exception_ptr(const exception_ptr&) noexcept;
+      exception_ptr(nullptr_t) noexcept
+      : _M_exception_object(0)
+      { }
+{
+      exception_ptr(exception_ptr&& __o) noexcept
+      : _M_exception_object(__o._M_exception_object)
+      { __o._M_exception_object = 0; }
+{
+      exception_ptr&
+      operator=(const exception_ptr&) noexcept;
+      exception_ptr&
+      operator=(exception_ptr&& __o) noexcept
+      
+{
+        exception_ptr(static_cast<exception_ptr&&>(__o)).swap(*this);
+        return *this;
+      }
+      ~exception_ptr() noexcept;
+      void
+      swap(exception_ptr&) noexcept;
+      explicit operator bool() const
+      { return _M_exception_object; }
+{
+      friend bool
+      operator==(const exception_ptr&, const exception_ptr&)
+ noexcept __attribute__ ((__pure__));
+      const class std::type_info*
+      __cxa_exception_type() const noexcept
+ __attribute__ ((__pure__));
+    };
+    bool
+    operator==(const exception_ptr&, const exception_ptr&)
+      noexcept __attribute__ ((__pure__));
+    bool
+    operator!=(const exception_ptr&, const exception_ptr&)
+      noexcept __attribute__ ((__pure__));
+    inline void
+    swap(exception_ptr& __lhs, exception_ptr& __rhs)
+    { __lhs.swap(__rhs); }
+{
+    template<typename _Ex>
+      inline void
+      __dest_thunk(void* __x)
+      { static_cast<_Ex*>(__x)->~_Ex(); }
+{
+  }
+  template<typename _Ex>
+    exception_ptr
+    make_exception_ptr(_Ex __ex) noexcept
+    
+{
+      void* __e = __cxxabiv1::__cxa_allocate_exception(sizeof(_Ex));
+      (void) __cxxabiv1::__cxa_init_primary_exception(
+   __e, const_cast<std::type_info*>(&typeid(__ex)),
+   __exception_ptr::__dest_thunk<_Ex>);
+      try
+ 
+{
+          ::new (__e) _Ex(__ex);
+          return exception_ptr(__e);
+ }
+      catch(...)
+ 
+{
+   __cxxabiv1::__cxa_free_exception(__e);
+   return current_exception();
+ }
+    }
+}
+}
+namespace std __attribute__ ((__visibility__ ("default")))
+{
+  template<typename _Tp>
+    inline constexpr _Tp*
+    __addressof(_Tp& __r) noexcept
+    { return __builtin_addressof(__r); }
+{
+}
+namespace std __attribute__ ((__visibility__ ("default")))
+{
+  template<typename _Tp, _Tp __v>
+    struct integral_constant
+    
+{
+      static constexpr _Tp value = __v;
+      typedef _Tp value_type;
+      typedef integral_constant<_Tp, __v> type;
+      constexpr operator value_type() const noexcept { return value; }
+{
+      constexpr value_type operator()() const noexcept { return value; }
+{
+    };
+  template<typename _Tp, _Tp __v>
+    constexpr _Tp integral_constant<_Tp, __v>::value;
+  typedef integral_constant<bool, true> true_type;
+  typedef integral_constant<bool, false> false_type;
+  template<bool __v>
+    using __bool_constant = integral_constant<bool, __v>;
+  template<bool, typename, typename>
+    struct conditional;
+  template<typename...>
+    struct __or_;
+  template<>
+    struct __or_<>
+    : public false_type
+    { };
+{
+  template<typename _B1>
+    struct __or_<_B1>
+    : public _B1
+    { };
+{
+  template<typename _B1, typename _B2>
+    struct __or_<_B1, _B2>
+    : public conditional<_B1::value, _B1, _B2>::type
+    { };
+{
+  template<typename _B1, typename _B2, typename _B3, typename... _Bn>
+    struct __or_<_B1, _B2, _B3, _Bn...>
+    : public conditional<_B1::value, _B1, __or_<_B2, _B3, _Bn...>>::type
+    { };
+{
+  template<typename...>
+    struct __and_;
+  template<>
+    struct __and_<>
+    : public true_type
+    { };
+{
+  template<typename _B1>
+    struct __and_<_B1>
+    : public _B1
+    { };
+{
+  template<typename _B1, typename _B2>
+    struct __and_<_B1, _B2>
+    : public conditional<_B1::value, _B2, _B1>::type
+    { };
+{
+  template<typename _B1, typename _B2, typename _B3, typename... _Bn>
+    struct __and_<_B1, _B2, _B3, _Bn...>
+    : public conditional<_B1::value, __and_<_B2, _B3, _Bn...>, _B1>::type
+    { };
+{
+  template<typename _Pp>
+    struct __not_
+    : public __bool_constant<!bool(_Pp::value)>
+    { };
+{
+  template<typename _Tp>
+    struct __success_type
+    { typedef _Tp type; };
+{
+  struct __failure_type
+  { };
+{
+  template<typename>
+    struct remove_cv;
+  template<typename>
+    struct __is_void_helper
+    : public false_type { };
+{
+  template<>
+    struct __is_void_helper<void>
+    : public true_type { };
+{
+  template<typename _Tp>
+    struct is_void
+    : public __is_void_helper<typename remove_cv<_Tp>::type>::type
+    { };
+{
+  template<typename>
+    struct __is_integral_helper
+    : public false_type { };
+{
+  template<>
+    struct __is_integral_helper<bool>
+    : public true_type { };
+{
+  template<>
+    struct __is_integral_helper<char>
+    : public true_type { };
+{
+  template<>
+    struct __is_integral_helper<signed char>
+    : public true_type { };
+{
+  template<>
+    struct __is_integral_helper<unsigned char>
+    : public true_type { };
+{
+  template<>
+    struct __is_integral_helper<wchar_t>
+    : public true_type { };
+{
+  template<>
+    struct __is_integral_helper<char16_t>
+    : public true_type { };
+{
+  template<>
+    struct __is_integral_helper<char32_t>
+    : public true_type { };
+{
+  template<>
+    struct __is_integral_helper<short>
+    : public true_type { };
+{
+  template<>
+    struct __is_integral_helper<unsigned short>
+    : public true_type { };
+{
+  template<>
+    struct __is_integral_helper<int>
+    : public true_type { };
+{
+  template<>
+    struct __is_integral_helper<unsigned int>
+    : public true_type { };
+{
+  template<>
+    struct __is_integral_helper<long>
+    : public true_type { };
+{
+  template<>
+    struct __is_integral_helper<unsigned long>
+    : public true_type { };
+{
+  template<>
+    struct __is_integral_helper<long long>
+    : public true_type { };
+{
+  template<>
+    struct __is_integral_helper<unsigned long long>
+    : public true_type { };
+{
+  template<>
+    struct __is_integral_helper<__int128>
+    : public true_type { };
+{
+  template<>
+    struct __is_integral_helper<unsigned __int128>
+    : public true_type { };
+{
+  template<typename _Tp>
+    struct is_integral
+    : public __is_integral_helper<typename remove_cv<_Tp>::type>::type
+    { };
+{
+  template<typename>
+    struct __is_floating_point_helper
+    : public false_type { };
+{
+  template<>
+    struct __is_floating_point_helper<float>
+    : public true_type { };
+{
+  template<>
+    struct __is_floating_point_helper<double>
+    : public true_type { };
+{
+  template<>
+    struct __is_floating_point_helper<long double>
+    : public true_type { };
+{
+  template<>
+    struct __is_floating_point_helper<__float128>
+    : public true_type { };
+{
+  template<typename _Tp>
+    struct is_floating_point
+    : public __is_floating_point_helper<typename remove_cv<_Tp>::type>::type
+    { };
+{
+  template<typename>
+    struct is_array
+    : public false_type { };
+{
+  template<typename _Tp, std::size_t _Size>
+    struct is_array<_Tp[_Size]>
+    : public true_type { };
+{
+  template<typename _Tp>
+    struct is_array<_Tp[]>
+    : public true_type { };
+{
+  template<typename>
+    struct __is_pointer_helper
+    : public false_type { };
+{
+  template<typename _Tp>
+    struct __is_pointer_helper<_Tp*>
+    : public true_type { };
+{
+  template<typename _Tp>
+    struct is_pointer
+    : public __is_pointer_helper<typename remove_cv<_Tp>::type>::type
+    { };
+{
+  template<typename>
+    struct is_lvalue_reference
+    : public false_type { };
+{
+  template<typename _Tp>
+    struct is_lvalue_reference<_Tp&>
+    : public true_type { };
+{
+  template<typename>
+    struct is_rvalue_reference
+    : public false_type { };
+{
+  template<typename _Tp>
+    struct is_rvalue_reference<_Tp&&>
+    : public true_type { };
+{
+  template<typename>
+    struct is_function;
+  template<typename>
+    struct __is_member_object_pointer_helper
+    : public false_type { };
+{
+  template<typename _Tp, typename _Cp>
+    struct __is_member_object_pointer_helper<_Tp _Cp::*>
+    : public __not_<is_function<_Tp>>::type { };
+{
+  template<typename _Tp>
+    struct is_member_object_pointer
+    : public __is_member_object_pointer_helper<
+    typename remove_cv<_Tp>::type>::type
+    { };
+{
+  template<typename>
+    struct __is_member_function_pointer_helper
+    : public false_type { };
+{
+  template<typename _Tp, typename _Cp>
+    struct __is_member_function_pointer_helper<_Tp _Cp::*>
+    : public is_function<_Tp>::type { };
+{
+  template<typename _Tp>
+    struct is_member_function_pointer
+    : public __is_member_function_pointer_helper<
+    typename remove_cv<_Tp>::type>::type
+    { };
+{
+  template<typename _Tp>
+    struct is_enum
+    : public integral_constant<bool, __is_enum(_Tp)>
+    { };
+{
+  template<typename _Tp>
+    struct is_union
+    : public integral_constant<bool, __is_union(_Tp)>
+    { };
+{
+  template<typename _Tp>
+    struct is_class
+    : public integral_constant<bool, __is_class(_Tp)>
+    { };
+{
+  template<typename>
+    struct is_function
+    : public false_type { };
+{
+  template<typename _Res, typename... _ArgTypes >
+    struct is_function<_Res(_ArgTypes...) >
+    : public true_type { };
+{
+  template<typename _Res, typename... _ArgTypes >
+    struct is_function<_Res(_ArgTypes...) & >
+    : public true_type { };
+{
+  template<typename _Res, typename... _ArgTypes >
+    struct is_function<_Res(_ArgTypes...) && >
+    : public true_type { };
+{
+  template<typename _Res, typename... _ArgTypes >
+    struct is_function<_Res(_ArgTypes......) >
+    : public true_type { };
+{
+  template<typename _Res, typename... _ArgTypes >
+    struct is_function<_Res(_ArgTypes......) & >
+    : public true_type { };
+{
+  template<typename _Res, typename... _ArgTypes >
+    struct is_function<_Res(_ArgTypes......) && >
+    : public true_type { };
+{
+  template<typename _Res, typename... _ArgTypes >
+    struct is_function<_Res(_ArgTypes...) const >
+    : public true_type { };
+{
+  template<typename _Res, typename... _ArgTypes >
+    struct is_function<_Res(_ArgTypes...) const & >
+    : public true_type { };
+{
+  template<typename _Res, typename... _ArgTypes >
+    struct is_function<_Res(_ArgTypes...) const && >
+    : public true_type { };
+{
+  template<typename _Res, typename... _ArgTypes >
+    struct is_function<_Res(_ArgTypes......) const >
+    : public true_type { };
+{
+  template<typename _Res, typename... _ArgTypes >
+    struct is_function<_Res(_ArgTypes......) const & >
+    : public true_type { };
+{
+  template<typename _Res, typename... _ArgTypes >
+    struct is_function<_Res(_ArgTypes......) const && >
+    : public true_type { };
+{
+  template<typename _Res, typename... _ArgTypes >
+    struct is_function<_Res(_ArgTypes...) volatile >
+    : public true_type { };
+{
+  template<typename _Res, typename... _ArgTypes >
+    struct is_function<_Res(_ArgTypes...) volatile & >
+    : public true_type { };
+{
+  template<typename _Res, typename... _ArgTypes >
+    struct is_function<_Res(_ArgTypes...) volatile && >
+    : public true_type { };
+{
+  template<typename _Res, typename... _ArgTypes >
+    struct is_function<_Res(_ArgTypes......) volatile >
+    : public true_type { };
+{
+  template<typename _Res, typename... _ArgTypes >
+    struct is_function<_Res(_ArgTypes......) volatile & >
+    : public true_type { };
+{
+  template<typename _Res, typename... _ArgTypes >
+    struct is_function<_Res(_ArgTypes......) volatile && >
+    : public true_type { };
+{
+  template<typename _Res, typename... _ArgTypes >
+    struct is_function<_Res(_ArgTypes...) const volatile >
+    : public true_type { };
+{
+  template<typename _Res, typename... _ArgTypes >
+    struct is_function<_Res(_ArgTypes...) const volatile & >
+    : public true_type { };
+{
+  template<typename _Res, typename... _ArgTypes >
+    struct is_function<_Res(_ArgTypes...) const volatile && >
+    : public true_type { };
+{
+  template<typename _Res, typename... _ArgTypes >
+    struct is_function<_Res(_ArgTypes......) const volatile >
+    : public true_type { };
+{
+  template<typename _Res, typename... _ArgTypes >
+    struct is_function<_Res(_ArgTypes......) const volatile & >
+    : public true_type { };
+{
+  template<typename _Res, typename... _ArgTypes >
+    struct is_function<_Res(_ArgTypes......) const volatile && >
+    : public true_type { };
+{
+  template<typename>
+    struct __is_null_pointer_helper
+    : public false_type { };
+{
+  template<>
+    struct __is_null_pointer_helper<std::nullptr_t>
+    : public true_type { };
+{
+  template<typename _Tp>
+    struct is_null_pointer
+    : public __is_null_pointer_helper<typename remove_cv<_Tp>::type>::type
+    { };
+{
+  template<typename _Tp>
+    struct __is_nullptr_t
+    : public is_null_pointer<_Tp>
+    { };
+{
+  template<typename _Tp>
+    struct is_reference
+    : public __or_<is_lvalue_reference<_Tp>,
+                   is_rvalue_reference<_Tp>>::type
+    { };
+{
+  template<typename _Tp>
+    struct is_arithmetic
+    : public __or_<is_integral<_Tp>, is_floating_point<_Tp>>::type
+    { };
+{
+  template<typename _Tp>
+    struct is_fundamental
+    : public __or_<is_arithmetic<_Tp>, is_void<_Tp>,
+     is_null_pointer<_Tp>>::type
+    { };
+{
+  template<typename _Tp>
+    struct is_object
+    : public __not_<__or_<is_function<_Tp>, is_reference<_Tp>,
+                          is_void<_Tp>>>::type
+    { };
+{
+  template<typename>
+    struct is_member_pointer;
+  template<typename _Tp>
+    struct is_scalar
+    : public __or_<is_arithmetic<_Tp>, is_enum<_Tp>, is_pointer<_Tp>,
+                   is_member_pointer<_Tp>, is_null_pointer<_Tp>>::type
+    { };
+{
+  template<typename _Tp>
+    struct is_compound
+    : public __not_<is_fundamental<_Tp>>::type { };
+{
+  template<typename _Tp>
+    struct __is_member_pointer_helper
+    : public false_type { };
+{
+  template<typename _Tp, typename _Cp>
+    struct __is_member_pointer_helper<_Tp _Cp::*>
+    : public true_type { };
+{
+  template<typename _Tp>
+    struct is_member_pointer
+    : public __is_member_pointer_helper<typename remove_cv<_Tp>::type>::type
+    { };
+{
+  template<typename _Tp>
+    struct __is_referenceable
+    : public __or_<is_object<_Tp>, is_reference<_Tp>>::type
+    { };
+{
+  template<typename _Res, typename... _Args >
+    struct __is_referenceable<_Res(_Args...) >
+    : public true_type
+    { };
+{
+  template<typename _Res, typename... _Args >
+    struct __is_referenceable<_Res(_Args......) >
+    : public true_type
+    { };
+{
+  template<typename>
+    struct is_const
+    : public false_type { };
+{
+  template<typename _Tp>
+    struct is_const<_Tp const>
+    : public true_type { };
+{
+  template<typename>
+    struct is_volatile
+    : public false_type { };
+{
+  template<typename _Tp>
+    struct is_volatile<_Tp volatile>
+    : public true_type { };
+{
+  template<typename _Tp>
+    struct is_trivial
+    : public integral_constant<bool, __is_trivial(_Tp)>
+    { };
+{
+  template<typename _Tp>
+    struct is_trivially_copyable
+    : public integral_constant<bool, __is_trivially_copyable(_Tp)>
+    { };
+{
+  template<typename _Tp>
+    struct is_standard_layout
+    : public integral_constant<bool, __is_standard_layout(_Tp)>
+    { };
+{
+  template<typename _Tp>
+    struct is_pod
+    : public integral_constant<bool, __is_pod(_Tp)>
+    { };
+{
+  template<typename _Tp>
+    struct is_literal_type
+    : public integral_constant<bool, __is_literal_type(_Tp)>
+    { };
+{
+  template<typename _Tp>
+    struct is_empty
+    : public integral_constant<bool, __is_empty(_Tp)>
+    { };
+{
+  template<typename _Tp>
+    struct is_polymorphic
+    : public integral_constant<bool, __is_polymorphic(_Tp)>
+    { };
+{
+  template<typename _Tp>
+    struct is_final
+    : public integral_constant<bool, __is_final(_Tp)>
+    { };
+{
+  template<typename _Tp>
+    struct is_abstract
+    : public integral_constant<bool, __is_abstract(_Tp)>
+    { };
+{
+  template<typename _Tp,
+    bool = is_arithmetic<_Tp>::value>
+    struct __is_signed_helper
+    : public false_type { };
+{
+  template<typename _Tp>
+    struct __is_signed_helper<_Tp, true>
+    : public integral_constant<bool, _Tp(-1) < _Tp(0)>
+    { };
+{
+  template<typename _Tp>
+    struct is_signed
+    : public __is_signed_helper<_Tp>::type
+    { };
+{
+  template<typename _Tp>
+    struct is_unsigned
+    : public __and_<is_arithmetic<_Tp>, __not_<is_signed<_Tp>>>
+    { };
+{
+  template<typename _Tp, typename _Up = _Tp&&>
+    _Up
+    __declval(int);
+  template<typename _Tp>
+    _Tp
+    __declval(long);
+  template<typename _Tp>
+    auto declval() noexcept -> decltype(__declval<_Tp>(0));
+  template<typename, unsigned = 0>
+    struct extent;
+  template<typename>
+    struct remove_all_extents;
+  template<typename _Tp>
+    struct __is_array_known_bounds
+    : public integral_constant<bool, (extent<_Tp>::value > 0)>
+    { };
+{
+  template<typename _Tp>
+    struct __is_array_unknown_bounds
+    : public __and_<is_array<_Tp>, __not_<extent<_Tp>>>
+    { };
+{
+  struct __do_is_destructible_impl
+  
+{
+    template<typename _Tp, typename = decltype(declval<_Tp&>().~_Tp())>
+      static true_type __test(int);
+    template<typename>
+      static false_type __test(...);
+  };
+  template<typename _Tp>
+    struct __is_destructible_impl
+    : public __do_is_destructible_impl
+    
+{
+      typedef decltype(__test<_Tp>(0)) type;
+    };
+  template<typename _Tp,
+           bool = __or_<is_void<_Tp>,
+                        __is_array_unknown_bounds<_Tp>,
+                        is_function<_Tp>>::value,
+           bool = __or_<is_reference<_Tp>, is_scalar<_Tp>>::value>
+    struct __is_destructible_safe;
+  template<typename _Tp>
+    struct __is_destructible_safe<_Tp, false, false>
+    : public __is_destructible_impl<typename
+               remove_all_extents<_Tp>::type>::type
+    { };
+{
+  template<typename _Tp>
+    struct __is_destructible_safe<_Tp, true, false>
+    : public false_type { };
+{
+  template<typename _Tp>
+    struct __is_destructible_safe<_Tp, false, true>
+    : public true_type { };
+{
+  template<typename _Tp>
+    struct is_destructible
+    : public __is_destructible_safe<_Tp>::type
+    { };
+{
+  struct __do_is_nt_destructible_impl
+  
+{
+    template<typename _Tp>
+      static __bool_constant<noexcept(declval<_Tp&>().~_Tp())>
+      __test(int);
+    template<typename>
+      static false_type __test(...);
+  };
+  template<typename _Tp>
+    struct __is_nt_destructible_impl
+    : public __do_is_nt_destructible_impl
+    
+{
+      typedef decltype(__test<_Tp>(0)) type;
+    };
+  template<typename _Tp,
+           bool = __or_<is_void<_Tp>,
+                        __is_array_unknown_bounds<_Tp>,
+                        is_function<_Tp>>::value,
+           bool = __or_<is_reference<_Tp>, is_scalar<_Tp>>::value>
+    struct __is_nt_destructible_safe;
+  template<typename _Tp>
+    struct __is_nt_destructible_safe<_Tp, false, false>
+    : public __is_nt_destructible_impl<typename
+               remove_all_extents<_Tp>::type>::type
+    { };
+{
+  template<typename _Tp>
+    struct __is_nt_destructible_safe<_Tp, true, false>
+    : public false_type { };
+{
+  template<typename _Tp>
+    struct __is_nt_destructible_safe<_Tp, false, true>
+    : public true_type { };
+{
+  template<typename _Tp>
+    struct is_nothrow_destructible
+    : public __is_nt_destructible_safe<_Tp>::type
+    { };
+{
+  template<typename _Tp, typename... _Args>
+    struct is_constructible
+      : public __bool_constant<__is_constructible(_Tp, _Args...)>
+    { };
+{
+  template<typename _Tp>
+    struct is_default_constructible
+    : public is_constructible<_Tp>::type
+    { };
+{
+  template<typename _Tp, bool = __is_referenceable<_Tp>::value>
+    struct __is_copy_constructible_impl;
+  template<typename _Tp>
+    struct __is_copy_constructible_impl<_Tp, false>
+    : public false_type { };
+{
+  template<typename _Tp>
+    struct __is_copy_constructible_impl<_Tp, true>
+    : public is_constructible<_Tp, const _Tp&>
+    { };
+{
+  template<typename _Tp>
+    struct is_copy_constructible
+    : public __is_copy_constructible_impl<_Tp>
+    { };
+{
+  template<typename _Tp, bool = __is_referenceable<_Tp>::value>
+    struct __is_move_constructible_impl;
+  template<typename _Tp>
+    struct __is_move_constructible_impl<_Tp, false>
+    : public false_type { };
+{
+  template<typename _Tp>
+    struct __is_move_constructible_impl<_Tp, true>
+    : public is_constructible<_Tp, _Tp&&>
+    { };
+{
+  template<typename _Tp>
+    struct is_move_constructible
+    : public __is_move_constructible_impl<_Tp>
+    { };
+{
+  template<typename _Tp>
+    struct __is_nt_default_constructible_atom
+    : public integral_constant<bool, noexcept(_Tp())>
+    { };
+{
+  template<typename _Tp, bool = is_array<_Tp>::value>
+    struct __is_nt_default_constructible_impl;
+  template<typename _Tp>
+    struct __is_nt_default_constructible_impl<_Tp, true>
+    : public __and_<__is_array_known_bounds<_Tp>,
+      __is_nt_default_constructible_atom<typename
+                      remove_all_extents<_Tp>::type>>
+    { };
+{
+  template<typename _Tp>
+    struct __is_nt_default_constructible_impl<_Tp, false>
+    : public __is_nt_default_constructible_atom<_Tp>
+    { };
+{
+  template<typename _Tp>
+    struct is_nothrow_default_constructible
+    : public __and_<is_default_constructible<_Tp>,
+                    __is_nt_default_constructible_impl<_Tp>>
+    { };
+{
+  template<typename _Tp, typename... _Args>
+    struct __is_nt_constructible_impl
+    : public integral_constant<bool, noexcept(_Tp(declval<_Args>()...))>
+    { };
+{
+  template<typename _Tp, typename _Arg>
+    struct __is_nt_constructible_impl<_Tp, _Arg>
+    : public integral_constant<bool,
+                               noexcept(static_cast<_Tp>(declval<_Arg>()))>
+    { };
+{
+  template<typename _Tp>
+    struct __is_nt_constructible_impl<_Tp>
+    : public is_nothrow_default_constructible<_Tp>
+    { };
+{
+  template<typename _Tp, typename... _Args>
+    struct is_nothrow_constructible
+    : public __and_<is_constructible<_Tp, _Args...>,
+      __is_nt_constructible_impl<_Tp, _Args...>>
+    { };
+{
+  template<typename _Tp, bool = __is_referenceable<_Tp>::value>
+    struct __is_nothrow_copy_constructible_impl;
+  template<typename _Tp>
+    struct __is_nothrow_copy_constructible_impl<_Tp, false>
+    : public false_type { };
+{
+  template<typename _Tp>
+    struct __is_nothrow_copy_constructible_impl<_Tp, true>
+    : public is_nothrow_constructible<_Tp, const _Tp&>
+    { };
+{
+  template<typename _Tp>
+    struct is_nothrow_copy_constructible
+    : public __is_nothrow_copy_constructible_impl<_Tp>
+    { };
+{
+  template<typename _Tp, bool = __is_referenceable<_Tp>::value>
+    struct __is_nothrow_move_constructible_impl;
+  template<typename _Tp>
+    struct __is_nothrow_move_constructible_impl<_Tp, false>
+    : public false_type { };
+{
+  template<typename _Tp>
+    struct __is_nothrow_move_constructible_impl<_Tp, true>
+    : public is_nothrow_constructible<_Tp, _Tp&&>
+    { };
+{
+  template<typename _Tp>
+    struct is_nothrow_move_constructible
+    : public __is_nothrow_move_constructible_impl<_Tp>
+    { };
+{
+  template<typename _Tp, typename _Up>
+    struct is_assignable
+      : public __bool_constant<__is_assignable(_Tp, _Up)>
+    { };
+{
+  template<typename _Tp, bool = __is_referenceable<_Tp>::value>
+    struct __is_copy_assignable_impl;
+  template<typename _Tp>
+    struct __is_copy_assignable_impl<_Tp, false>
+    : public false_type { };
+{
+  template<typename _Tp>
+    struct __is_copy_assignable_impl<_Tp, true>
+    : public is_assignable<_Tp&, const _Tp&>
+    { };
+{
+  template<typename _Tp>
+    struct is_copy_assignable
+    : public __is_copy_assignable_impl<_Tp>
+    { };
+{
+  template<typename _Tp, bool = __is_referenceable<_Tp>::value>
+    struct __is_move_assignable_impl;
+  template<typename _Tp>
+    struct __is_move_assignable_impl<_Tp, false>
+    : public false_type { };
+{
+  template<typename _Tp>
+    struct __is_move_assignable_impl<_Tp, true>
+    : public is_assignable<_Tp&, _Tp&&>
+    { };
+{
+  template<typename _Tp>
+    struct is_move_assignable
+    : public __is_move_assignable_impl<_Tp>
+    { };
+{
+  template<typename _Tp, typename _Up>
+    struct __is_nt_assignable_impl
+    : public integral_constant<bool, noexcept(declval<_Tp>() = declval<_Up>())>
+    { };
+{
+  template<typename _Tp, typename _Up>
+    struct is_nothrow_assignable
+    : public __and_<is_assignable<_Tp, _Up>,
+      __is_nt_assignable_impl<_Tp, _Up>>
+    { };
+{
+  template<typename _Tp, bool = __is_referenceable<_Tp>::value>
+    struct __is_nt_copy_assignable_impl;
+  template<typename _Tp>
+    struct __is_nt_copy_assignable_impl<_Tp, false>
+    : public false_type { };
+{
+  template<typename _Tp>
+    struct __is_nt_copy_assignable_impl<_Tp, true>
+    : public is_nothrow_assignable<_Tp&, const _Tp&>
+    { };
+{
+  template<typename _Tp>
+    struct is_nothrow_copy_assignable
+    : public __is_nt_copy_assignable_impl<_Tp>
+    { };
+{
+  template<typename _Tp, bool = __is_referenceable<_Tp>::value>
+    struct __is_nt_move_assignable_impl;
+  template<typename _Tp>
+    struct __is_nt_move_assignable_impl<_Tp, false>
+    : public false_type { };
+{
+  template<typename _Tp>
+    struct __is_nt_move_assignable_impl<_Tp, true>
+    : public is_nothrow_assignable<_Tp&, _Tp&&>
+    { };
+{
+  template<typename _Tp>
+    struct is_nothrow_move_assignable
+    : public __is_nt_move_assignable_impl<_Tp>
+    { };
+{
+  template<typename _Tp, typename... _Args>
+    struct is_trivially_constructible
+    : public __bool_constant<__is_trivially_constructible(_Tp, _Args...)>
+    { };
+{
+  template<typename _Tp>
+    struct is_trivially_default_constructible
+    : public is_trivially_constructible<_Tp>::type
+    { };
+{
+  struct __do_is_implicitly_default_constructible_impl
+  
+{
+    template <typename _Tp>
+    static void __helper(const _Tp&);
+    template <typename _Tp>
+    static true_type __test(const _Tp&,
+                            decltype(__helper<const _Tp&>({}))* = 0);
+{
+    static false_type __test(...);
+  };
+  template<typename _Tp>
+    struct __is_implicitly_default_constructible_impl
+    : public __do_is_implicitly_default_constructible_impl
+    
+{
+      typedef decltype(__test(declval<_Tp>())) type;
+    };
+  template<typename _Tp>
+    struct __is_implicitly_default_constructible_safe
+    : public __is_implicitly_default_constructible_impl<_Tp>::type
+    { };
+{
+  template <typename _Tp>
+    struct __is_implicitly_default_constructible
+    : public __and_<is_default_constructible<_Tp>,
+      __is_implicitly_default_constructible_safe<_Tp>>
+    { };
+{
+  template<typename _Tp, bool = __is_referenceable<_Tp>::value>
+    struct __is_trivially_copy_constructible_impl;
+  template<typename _Tp>
+    struct __is_trivially_copy_constructible_impl<_Tp, false>
+    : public false_type { };
+{
+  template<typename _Tp>
+    struct __is_trivially_copy_constructible_impl<_Tp, true>
+    : public __and_<is_copy_constructible<_Tp>,
+      integral_constant<bool,
+   __is_trivially_constructible(_Tp, const _Tp&)>>
+    { };
+{
+  template<typename _Tp>
+    struct is_trivially_copy_constructible
+    : public __is_trivially_copy_constructible_impl<_Tp>
+    { };
+{
+  template<typename _Tp, bool = __is_referenceable<_Tp>::value>
+    struct __is_trivially_move_constructible_impl;
+  template<typename _Tp>
+    struct __is_trivially_move_constructible_impl<_Tp, false>
+    : public false_type { };
+{
+  template<typename _Tp>
+    struct __is_trivially_move_constructible_impl<_Tp, true>
+    : public __and_<is_move_constructible<_Tp>,
+      integral_constant<bool,
+   __is_trivially_constructible(_Tp, _Tp&&)>>
+    { };
+{
+  template<typename _Tp>
+    struct is_trivially_move_constructible
+    : public __is_trivially_move_constructible_impl<_Tp>
+    { };
+{
+  template<typename _Tp, typename _Up>
+    struct is_trivially_assignable
+    : public __bool_constant<__is_trivially_assignable(_Tp, _Up)>
+    { };
+{
+  template<typename _Tp, bool = __is_referenceable<_Tp>::value>
+    struct __is_trivially_copy_assignable_impl;
+  template<typename _Tp>
+    struct __is_trivially_copy_assignable_impl<_Tp, false>
+    : public false_type { };
+{
+  template<typename _Tp>
+    struct __is_trivially_copy_assignable_impl<_Tp, true>
+    : public __bool_constant<__is_trivially_assignable(_Tp&, const _Tp&)>
+    { };
+{
+  template<typename _Tp>
+    struct is_trivially_copy_assignable
+    : public __is_trivially_copy_assignable_impl<_Tp>
+    { };
+{
+  template<typename _Tp, bool = __is_referenceable<_Tp>::value>
+    struct __is_trivially_move_assignable_impl;
+  template<typename _Tp>
+    struct __is_trivially_move_assignable_impl<_Tp, false>
+    : public false_type { };
+{
+  template<typename _Tp>
+    struct __is_trivially_move_assignable_impl<_Tp, true>
+    : public __bool_constant<__is_trivially_assignable(_Tp&, _Tp&&)>
+    { };
+{
+  template<typename _Tp>
+    struct is_trivially_move_assignable
+    : public __is_trivially_move_assignable_impl<_Tp>
+    { };
+{
+  template<typename _Tp>
+    struct is_trivially_destructible
+    : public __and_<is_destructible<_Tp>,
+      __bool_constant<__has_trivial_destructor(_Tp)>>
+    { };
+{
+  template<typename _Tp>
+    struct has_virtual_destructor
+    : public integral_constant<bool, __has_virtual_destructor(_Tp)>
+    { };
+{
+  template<typename _Tp>
+    struct alignment_of
+    : public integral_constant<std::size_t, alignof(_Tp)> { };
+{
+  template<typename>
+    struct rank
+    : public integral_constant<std::size_t, 0> { };
+{
+  template<typename _Tp, std::size_t _Size>
+    struct rank<_Tp[_Size]>
+    : public integral_constant<std::size_t, 1 + rank<_Tp>::value> { };
+{
+  template<typename _Tp>
+    struct rank<_Tp[]>
+    : public integral_constant<std::size_t, 1 + rank<_Tp>::value> { };
+{
+  template<typename, unsigned _Uint>
+    struct extent
+    : public integral_constant<std::size_t, 0> { };
+{
+  template<typename _Tp, unsigned _Uint, std::size_t _Size>
+    struct extent<_Tp[_Size], _Uint>
+    : public integral_constant<std::size_t,
+          _Uint == 0 ? _Size : extent<_Tp,
+          _Uint - 1>::value>
+    { };
+{
+  template<typename _Tp, unsigned _Uint>
+    struct extent<_Tp[], _Uint>
+    : public integral_constant<std::size_t,
+          _Uint == 0 ? 0 : extent<_Tp,
+             _Uint - 1>::value>
+    { };
+{
+  template<typename, typename>
+    struct is_same
+    : public false_type { };
+{
+  template<typename _Tp>
+    struct is_same<_Tp, _Tp>
+    : public true_type { };
+{
+  template<typename _Base, typename _Derived>
+    struct is_base_of
+    : public integral_constant<bool, __is_base_of(_Base, _Derived)>
+    { };
+{
+  template<typename _From, typename _To,
+           bool = __or_<is_void<_From>, is_function<_To>,
+                        is_array<_To>>::value>
+    struct __is_convertible_helper
+    
+{
+      typedef typename is_void<_To>::type type;
+    };
+  template<typename _From, typename _To>
+    class __is_convertible_helper<_From, _To, false>
+    
+{
+      template<typename _To1>
+ static void __test_aux(_To1) noexcept;
+      template<typename _From1, typename _To1,
+        typename = decltype(__test_aux<_To1>(std::declval<_From1>()))>
+ static true_type
+ __test(int);
+      template<typename, typename>
+ static false_type
+ __test(...);
+    public:
+      typedef decltype(__test<_From, _To>(0)) type;
+    };
+  template<typename _From, typename _To>
+    struct is_convertible
+    : public __is_convertible_helper<_From, _To>::type
+    { };
+{
+  template<typename _Tp>
+    struct remove_const
+    { typedef _Tp type; };
+{
+  template<typename _Tp>
+    struct remove_const<_Tp const>
+    { typedef _Tp type; };
+{
+  template<typename _Tp>
+    struct remove_volatile
+    { typedef _Tp type; };
+{
+  template<typename _Tp>
+    struct remove_volatile<_Tp volatile>
+    { typedef _Tp type; };
+{
+  template<typename _Tp>
+    struct remove_cv
+    
+{
+      typedef typename
+      remove_const<typename remove_volatile<_Tp>::type>::type type;
+    };
+  template<typename _Tp>
+    struct add_const
+    { typedef _Tp const type; };
+{
+  template<typename _Tp>
+    struct add_volatile
+    { typedef _Tp volatile type; };
+{
+  template<typename _Tp>
+    struct add_cv
+    
+{
+      typedef typename
+      add_const<typename add_volatile<_Tp>::type>::type type;
+    };
+  template<typename _Tp>
+    using remove_const_t = typename remove_const<_Tp>::type;
+  template<typename _Tp>
+    using remove_volatile_t = typename remove_volatile<_Tp>::type;
+  template<typename _Tp>
+    using remove_cv_t = typename remove_cv<_Tp>::type;
+  template<typename _Tp>
+    using add_const_t = typename add_const<_Tp>::type;
+  template<typename _Tp>
+    using add_volatile_t = typename add_volatile<_Tp>::type;
+  template<typename _Tp>
+    using add_cv_t = typename add_cv<_Tp>::type;
+  template<typename _Tp>
+    struct remove_reference
+    { typedef _Tp type; };
+{
+  template<typename _Tp>
+    struct remove_reference<_Tp&>
+    { typedef _Tp type; };
+{
+  template<typename _Tp>
+    struct remove_reference<_Tp&&>
+    { typedef _Tp type; };
+{
+  template<typename _Tp, bool = __is_referenceable<_Tp>::value>
+    struct __add_lvalue_reference_helper
+    { typedef _Tp type; };
+{
+  template<typename _Tp>
+    struct __add_lvalue_reference_helper<_Tp, true>
+    { typedef _Tp& type; };
+{
+  template<typename _Tp>
+    struct add_lvalue_reference
+    : public __add_lvalue_reference_helper<_Tp>
+    { };
+{
+  template<typename _Tp, bool = __is_referenceable<_Tp>::value>
+    struct __add_rvalue_reference_helper
+    { typedef _Tp type; };
+{
+  template<typename _Tp>
+    struct __add_rvalue_reference_helper<_Tp, true>
+    { typedef _Tp&& type; };
+{
+  template<typename _Tp>
+    struct add_rvalue_reference
+    : public __add_rvalue_reference_helper<_Tp>
+    { };
+{
+  template<typename _Tp>
+    using remove_reference_t = typename remove_reference<_Tp>::type;
+  template<typename _Tp>
+    using add_lvalue_reference_t = typename add_lvalue_reference<_Tp>::type;
+  template<typename _Tp>
+    using add_rvalue_reference_t = typename add_rvalue_reference<_Tp>::type;
+  template<typename _Unqualified, bool _IsConst, bool _IsVol>
+    struct __cv_selector;
+  template<typename _Unqualified>
+    struct __cv_selector<_Unqualified, false, false>
+    { typedef _Unqualified __type; };
+{
+  template<typename _Unqualified>
+    struct __cv_selector<_Unqualified, false, true>
+    { typedef volatile _Unqualified __type; };
+{
+  template<typename _Unqualified>
+    struct __cv_selector<_Unqualified, true, false>
+    { typedef const _Unqualified __type; };
+{
+  template<typename _Unqualified>
+    struct __cv_selector<_Unqualified, true, true>
+    { typedef const volatile _Unqualified __type; };
+{
+  template<typename _Qualified, typename _Unqualified,
+    bool _IsConst = is_const<_Qualified>::value,
+    bool _IsVol = is_volatile<_Qualified>::value>
+    class __match_cv_qualifiers
+    
+{
+      typedef __cv_selector<_Unqualified, _IsConst, _IsVol> __match;
+    public:
+      typedef typename __match::__type __type;
+    };
+  template<typename _Tp>
+    struct __make_unsigned
+    { typedef _Tp __type; };
+{
+  template<>
+    struct __make_unsigned<char>
+    { typedef unsigned char __type; };
+{
+  template<>
+    struct __make_unsigned<signed char>
+    { typedef unsigned char __type; };
+{
+  template<>
+    struct __make_unsigned<short>
+    { typedef unsigned short __type; };
+{
+  template<>
+    struct __make_unsigned<int>
+    { typedef unsigned int __type; };
+{
+  template<>
+    struct __make_unsigned<long>
+    { typedef unsigned long __type; };
+{
+  template<>
+    struct __make_unsigned<long long>
+    { typedef unsigned long long __type; };
+{
+  template<>
+    struct __make_unsigned<__int128>
+    { typedef unsigned __int128 __type; };
+{
+  template<typename _Tp,
+    bool _IsInt = is_integral<_Tp>::value,
+    bool _IsEnum = is_enum<_Tp>::value>
+    class __make_unsigned_selector;
+  template<typename _Tp>
+    class __make_unsigned_selector<_Tp, true, false>
+    
+{
+      using __unsigned_type
+ = typename __make_unsigned<typename remove_cv<_Tp>::type>::__type;
+    public:
+      using __type
+ = typename __match_cv_qualifiers<_Tp, __unsigned_type>::__type;
+    };
+  class __make_unsigned_selector_base
+  
+{
+  protected:
+    template<typename...> struct _List { };
+{
+    template<typename _Tp, typename... _Up>
+      struct _List<_Tp, _Up...> : _List<_Up...>
+      { static constexpr size_t __size = sizeof(_Tp); };
+{
+    template<size_t _Sz, typename _Tp, bool = (_Sz <= _Tp::__size)>
+      struct __select;
+    template<size_t _Sz, typename _Uint, typename... _UInts>
+      struct __select<_Sz, _List<_Uint, _UInts...>, true>
+      { using __type = _Uint; };
+{
+    template<size_t _Sz, typename _Uint, typename... _UInts>
+      struct __select<_Sz, _List<_Uint, _UInts...>, false>
+      : __select<_Sz, _List<_UInts...>>
+      { };
+{
+  };
+  template<typename _Tp>
+    class __make_unsigned_selector<_Tp, false, true>
+    : __make_unsigned_selector_base
+    
+{
+      using _UInts = _List<unsigned char, unsigned short, unsigned int,
+      unsigned long, unsigned long long>;
+      using __unsigned_type = typename __select<sizeof(_Tp), _UInts>::__type;
+    public:
+      using __type
+ = typename __match_cv_qualifiers<_Tp, __unsigned_type>::__type;
+    };
+  template<>
+    struct __make_unsigned<wchar_t>
+    
+{
+      using __type
+ = typename __make_unsigned_selector<wchar_t, false, true>::__type;
+    };
+  template<>
+    struct __make_unsigned<char16_t>
+    
+{
+      using __type
+ = typename __make_unsigned_selector<char16_t, false, true>::__type;
+    };
+  template<>
+    struct __make_unsigned<char32_t>
+    
+{
+      using __type
+ = typename __make_unsigned_selector<char32_t, false, true>::__type;
+    };
+  template<typename _Tp>
+    struct make_unsigned
+    { typedef typename __make_unsigned_selector<_Tp>::__type type; };
+{
+  template<>
+    struct make_unsigned<bool>;
+  template<typename _Tp>
+    struct __make_signed
+    { typedef _Tp __type; };
+{
+  template<>
+    struct __make_signed<char>
+    { typedef signed char __type; };
+{
+  template<>
+    struct __make_signed<unsigned char>
+    { typedef signed char __type; };
+{
+  template<>
+    struct __make_signed<unsigned short>
+    { typedef signed short __type; };
+{
+  template<>
+    struct __make_signed<unsigned int>
+    { typedef signed int __type; };
+{
+  template<>
+    struct __make_signed<unsigned long>
+    { typedef signed long __type; };
+{
+  template<>
+    struct __make_signed<unsigned long long>
+    { typedef signed long long __type; };
+{
+  template<>
+    struct __make_signed<unsigned __int128>
+    { typedef __int128 __type; };
+{
+  template<typename _Tp,
+    bool _IsInt = is_integral<_Tp>::value,
+    bool _IsEnum = is_enum<_Tp>::value>
+    class __make_signed_selector;
+  template<typename _Tp>
+    class __make_signed_selector<_Tp, true, false>
+    
+{
+      using __signed_type
+ = typename __make_signed<typename remove_cv<_Tp>::type>::__type;
+    public:
+      using __type
+ = typename __match_cv_qualifiers<_Tp, __signed_type>::__type;
+    };
+  template<typename _Tp>
+    class __make_signed_selector<_Tp, false, true>
+    
+{
+      typedef typename __make_unsigned_selector<_Tp>::__type __unsigned_type;
+    public:
+      typedef typename __make_signed_selector<__unsigned_type>::__type __type;
+    };
+  template<>
+    struct __make_signed<wchar_t>
+    
+{
+      using __type
+ = typename __make_signed_selector<wchar_t, false, true>::__type;
+    };
+  template<>
+    struct __make_signed<char16_t>
+    
+{
+      using __type
+ = typename __make_signed_selector<char16_t, false, true>::__type;
+    };
+  template<>
+    struct __make_signed<char32_t>
+    
+{
+      using __type
+ = typename __make_signed_selector<char32_t, false, true>::__type;
+    };
+  template<typename _Tp>
+    struct make_signed
+    { typedef typename __make_signed_selector<_Tp>::__type type; };
+{
+  template<>
+    struct make_signed<bool>;
+  template<typename _Tp>
+    using make_signed_t = typename make_signed<_Tp>::type;
+  template<typename _Tp>
+    using make_unsigned_t = typename make_unsigned<_Tp>::type;
+  template<typename _Tp>
+    struct remove_extent
+    { typedef _Tp type; };
+{
+  template<typename _Tp, std::size_t _Size>
+    struct remove_extent<_Tp[_Size]>
+    { typedef _Tp type; };
+{
+  template<typename _Tp>
+    struct remove_extent<_Tp[]>
+    { typedef _Tp type; };
+{
+  template<typename _Tp>
+    struct remove_all_extents
+    { typedef _Tp type; };
+{
+  template<typename _Tp, std::size_t _Size>
+    struct remove_all_extents<_Tp[_Size]>
+    { typedef typename remove_all_extents<_Tp>::type type; };
+{
+  template<typename _Tp>
+    struct remove_all_extents<_Tp[]>
+    { typedef typename remove_all_extents<_Tp>::type type; };
+{
+  template<typename _Tp>
+    using remove_extent_t = typename remove_extent<_Tp>::type;
+  template<typename _Tp>
+    using remove_all_extents_t = typename remove_all_extents<_Tp>::type;
+  template<typename _Tp, typename>
+    struct __remove_pointer_helper
+    { typedef _Tp type; };
+{
+  template<typename _Tp, typename _Up>
+    struct __remove_pointer_helper<_Tp, _Up*>
+    { typedef _Up type; };
+{
+  template<typename _Tp>
+    struct remove_pointer
+    : public __remove_pointer_helper<_Tp, typename remove_cv<_Tp>::type>
+    { };
+{
+  template<typename _Tp, bool = __or_<__is_referenceable<_Tp>,
+          is_void<_Tp>>::value>
+    struct __add_pointer_helper
+    { typedef _Tp type; };
+{
+  template<typename _Tp>
+    struct __add_pointer_helper<_Tp, true>
+    { typedef typename remove_reference<_Tp>::type* type; };
+{
+  template<typename _Tp>
+    struct add_pointer
+    : public __add_pointer_helper<_Tp>
+    { };
+{
+  template<typename _Tp>
+    using remove_pointer_t = typename remove_pointer<_Tp>::type;
+  template<typename _Tp>
+    using add_pointer_t = typename add_pointer<_Tp>::type;
+  template<std::size_t _Len>
+    struct __aligned_storage_msa
+    
+{
+      union __type
+      
+{
+ unsigned char __data[_Len];
+ struct __attribute__((__aligned__)) { } __align;
+{
+      };
+    };
+  template<std::size_t _Len, std::size_t _Align =
+    __alignof__(typename __aligned_storage_msa<_Len>::__type)>
+    struct aligned_storage
+    
+{
+      union type
+      
+{
+ unsigned char __data[_Len];
+ struct __attribute__((__aligned__((_Align)))) { } __align;
+{
+      };
+    };
+  template <typename... _Types>
+    struct __strictest_alignment
+    
+{
+      static const size_t _S_alignment = 0;
+      static const size_t _S_size = 0;
+    };
+  template <typename _Tp, typename... _Types>
+    struct __strictest_alignment<_Tp, _Types...>
+    
+{
+      static const size_t _S_alignment =
+        alignof(_Tp) > __strictest_alignment<_Types...>::_S_alignment
+ ? alignof(_Tp) : __strictest_alignment<_Types...>::_S_alignment;
+      static const size_t _S_size =
+        sizeof(_Tp) > __strictest_alignment<_Types...>::_S_size
+ ? sizeof(_Tp) : __strictest_alignment<_Types...>::_S_size;
+    };
+  template <size_t _Len, typename... _Types>
+    struct aligned_union
+    
+{
+    private:
+      static_assert(sizeof...(_Types) != 0, "At least one type is required");
+      using __strictest = __strictest_alignment<_Types...>;
+      static const size_t _S_len = _Len > __strictest::_S_size
+ ? _Len : __strictest::_S_size;
+    public:
+      static const size_t alignment_value = __strictest::_S_alignment;
+      typedef typename aligned_storage<_S_len, alignment_value>::type type;
+    };
+  template <size_t _Len, typename... _Types>
+    const size_t aligned_union<_Len, _Types...>::alignment_value;
+  template<typename _Up,
+    bool _IsArray = is_array<_Up>::value,
+    bool _IsFunction = is_function<_Up>::value>
+    struct __decay_selector;
+  template<typename _Up>
+    struct __decay_selector<_Up, false, false>
+    { typedef typename remove_cv<_Up>::type __type; };
+{
+  template<typename _Up>
+    struct __decay_selector<_Up, true, false>
+    { typedef typename remove_extent<_Up>::type* __type; };
+{
+  template<typename _Up>
+    struct __decay_selector<_Up, false, true>
+    { typedef typename add_pointer<_Up>::type __type; };
+{
+  template<typename _Tp>
+    class decay
+    
+{
+      typedef typename remove_reference<_Tp>::type __remove_type;
+    public:
+      typedef typename __decay_selector<__remove_type>::__type type;
+    };
+  template<typename _Tp>
+    class reference_wrapper;
+  template<typename _Tp>
+    struct __strip_reference_wrapper
+    
+{
+      typedef _Tp __type;
+    };
+  template<typename _Tp>
+    struct __strip_reference_wrapper<reference_wrapper<_Tp> >
+    
+{
+      typedef _Tp& __type;
+    };
+  template<typename _Tp>
+    struct __decay_and_strip
+    
+{
+      typedef typename __strip_reference_wrapper<
+ typename decay<_Tp>::type>::__type __type;
+    };
+  template<bool, typename _Tp = void>
+    struct enable_if
+    { };
+{
+  template<typename _Tp>
+    struct enable_if<true, _Tp>
+    { typedef _Tp type; };
+{
+  template<typename... _Cond>
+    using _Require = typename enable_if<__and_<_Cond...>::value>::type;
+  template<bool _Cond, typename _Iftrue, typename _Iffalse>
+    struct conditional
+    { typedef _Iftrue type; };
+{
+  template<typename _Iftrue, typename _Iffalse>
+    struct conditional<false, _Iftrue, _Iffalse>
+    { typedef _Iffalse type; };
+{
+  template<typename... _Tp>
+    struct common_type;
+  struct __do_common_type_impl
+  
+{
+    template<typename _Tp, typename _Up>
+      static __success_type<typename decay<decltype
+       (true ? std::declval<_Tp>()
+        : std::declval<_Up>())>::type> _S_test(int);
+    template<typename, typename>
+      static __failure_type _S_test(...);
+  };
+  template<typename _Tp, typename _Up>
+    struct __common_type_impl
+    : private __do_common_type_impl
+    
+{
+      typedef decltype(_S_test<_Tp, _Up>(0)) type;
+    };
+  struct __do_member_type_wrapper
+  
+{
+    template<typename _Tp>
+      static __success_type<typename _Tp::type> _S_test(int);
+    template<typename>
+      static __failure_type _S_test(...);
+  };
+  template<typename _Tp>
+    struct __member_type_wrapper
+    : private __do_member_type_wrapper
+    
+{
+      typedef decltype(_S_test<_Tp>(0)) type;
+    };
+  template<typename _CTp, typename... _Args>
+    struct __expanded_common_type_wrapper
+    
+{
+      typedef common_type<typename _CTp::type, _Args...> type;
+    };
+  template<typename... _Args>
+    struct __expanded_common_type_wrapper<__failure_type, _Args...>
+    { typedef __failure_type type; };
+{
+  template<>
+    struct common_type<>
+    { };
+{
+  template<typename _Tp>
+    struct common_type<_Tp>
+    : common_type<_Tp, _Tp>
+    { };
+{
+  template<typename _Tp, typename _Up>
+    struct common_type<_Tp, _Up>
+    : public __common_type_impl<_Tp, _Up>::type
+    { };
+{
+  template<typename _Tp, typename _Up, typename... _Vp>
+    struct common_type<_Tp, _Up, _Vp...>
+    : public __expanded_common_type_wrapper<typename __member_type_wrapper<
+               common_type<_Tp, _Up>>::type, _Vp...>::type
+    { };
+{
+  template<typename _Tp, bool = is_enum<_Tp>::value>
+    struct __underlying_type_impl
+    
+{
+      using type = __underlying_type(_Tp);
+    };
+  template<typename _Tp>
+    struct __underlying_type_impl<_Tp, false>
+    { };
+{
+  template<typename _Tp>
+    struct underlying_type
+    : public __underlying_type_impl<_Tp>
+    { };
+{
+  template<typename _Tp>
+    struct __declval_protector
+    
+{
+      static const bool __stop = false;
+    };
+  template<typename _Tp>
+    auto declval() noexcept -> decltype(__declval<_Tp>(0))
+    
+{
+      static_assert(__declval_protector<_Tp>::__stop,
+      "declval() must not be used!");
+      return __declval<_Tp>(0);
+    }
+  template<typename _Tp>
+    using __remove_cvref_t
+     = typename remove_cv<typename remove_reference<_Tp>::type>::type;
+  template<typename _Signature>
+    class result_of;
+  struct __invoke_memfun_ref { };
+{
+  struct __invoke_memfun_deref { };
+{
+  struct __invoke_memobj_ref { };
+{
+  struct __invoke_memobj_deref { };
+{
+  struct __invoke_other { };
+{
+  template<typename _Tp, typename _Tag>
+    struct __result_of_success : __success_type<_Tp>
+    { using __invoke_type = _Tag; };
+{
+  struct __result_of_memfun_ref_impl
+  
+{
+    template<typename _Fp, typename _Tp1, typename... _Args>
+      static __result_of_success<decltype(
+      (std::declval<_Tp1>().*std::declval<_Fp>())(std::declval<_Args>()...)
+      ), __invoke_memfun_ref> _S_test(int);
+    template<typename...>
+      static __failure_type _S_test(...);
+  };
+  template<typename _MemPtr, typename _Arg, typename... _Args>
+    struct __result_of_memfun_ref
+    : private __result_of_memfun_ref_impl
+    
+{
+      typedef decltype(_S_test<_MemPtr, _Arg, _Args...>(0)) type;
+    };
+  struct __result_of_memfun_deref_impl
+  
+{
+    template<typename _Fp, typename _Tp1, typename... _Args>
+      static __result_of_success<decltype(
+      ((*std::declval<_Tp1>()).*std::declval<_Fp>())(std::declval<_Args>()...)
+      ), __invoke_memfun_deref> _S_test(int);
+    template<typename...>
+      static __failure_type _S_test(...);
+  };
+  template<typename _MemPtr, typename _Arg, typename... _Args>
+    struct __result_of_memfun_deref
+    : private __result_of_memfun_deref_impl
+    
+{
+      typedef decltype(_S_test<_MemPtr, _Arg, _Args...>(0)) type;
+    };
+  struct __result_of_memobj_ref_impl
+  
+{
+    template<typename _Fp, typename _Tp1>
+      static __result_of_success<decltype(
+      std::declval<_Tp1>().*std::declval<_Fp>()
+      ), __invoke_memobj_ref> _S_test(int);
+    template<typename, typename>
+      static __failure_type _S_test(...);
+  };
+  template<typename _MemPtr, typename _Arg>
+    struct __result_of_memobj_ref
+    : private __result_of_memobj_ref_impl
+    
+{
+      typedef decltype(_S_test<_MemPtr, _Arg>(0)) type;
+    };
+  struct __result_of_memobj_deref_impl
+  
+{
+    template<typename _Fp, typename _Tp1>
+      static __result_of_success<decltype(
+      (*std::declval<_Tp1>()).*std::declval<_Fp>()
+      ), __invoke_memobj_deref> _S_test(int);
+    template<typename, typename>
+      static __failure_type _S_test(...);
+  };
+  template<typename _MemPtr, typename _Arg>
+    struct __result_of_memobj_deref
+    : private __result_of_memobj_deref_impl
+    
+{
+      typedef decltype(_S_test<_MemPtr, _Arg>(0)) type;
+    };
+  template<typename _MemPtr, typename _Arg>
+    struct __result_of_memobj;
+  template<typename _Res, typename _Class, typename _Arg>
+    struct __result_of_memobj<_Res _Class::*, _Arg>
+    
+{
+      typedef __remove_cvref_t<_Arg> _Argval;
+      typedef _Res _Class::* _MemPtr;
+      typedef typename conditional<__or_<is_same<_Argval, _Class>,
+        is_base_of<_Class, _Argval>>::value,
+        __result_of_memobj_ref<_MemPtr, _Arg>,
+        __result_of_memobj_deref<_MemPtr, _Arg>
+      >::type::type type;
+    };
+  template<typename _MemPtr, typename _Arg, typename... _Args>
+    struct __result_of_memfun;
+  template<typename _Res, typename _Class, typename _Arg, typename... _Args>
+    struct __result_of_memfun<_Res _Class::*, _Arg, _Args...>
+    
+{
+      typedef typename remove_reference<_Arg>::type _Argval;
+      typedef _Res _Class::* _MemPtr;
+      typedef typename conditional<is_base_of<_Class, _Argval>::value,
+        __result_of_memfun_ref<_MemPtr, _Arg, _Args...>,
+        __result_of_memfun_deref<_MemPtr, _Arg, _Args...>
+      >::type::type type;
+    };
+  template<typename _Tp, typename _Up = __remove_cvref_t<_Tp>>
+    struct __inv_unwrap
+    
+{
+      using type = _Tp;
+    };
+  template<typename _Tp, typename _Up>
+    struct __inv_unwrap<_Tp, reference_wrapper<_Up>>
+    
+{
+      using type = _Up&;
+    };
+  template<bool, bool, typename _Functor, typename... _ArgTypes>
+    struct __result_of_impl
+    
+{
+      typedef __failure_type type;
+    };
+  template<typename _MemPtr, typename _Arg>
+    struct __result_of_impl<true, false, _MemPtr, _Arg>
+    : public __result_of_memobj<typename decay<_MemPtr>::type,
+    typename __inv_unwrap<_Arg>::type>
+    { };
+{
+  template<typename _MemPtr, typename _Arg, typename... _Args>
+    struct __result_of_impl<false, true, _MemPtr, _Arg, _Args...>
+    : public __result_of_memfun<typename decay<_MemPtr>::type,
+    typename __inv_unwrap<_Arg>::type, _Args...>
+    { };
+{
+  struct __result_of_other_impl
+  
+{
+    template<typename _Fn, typename... _Args>
+      static __result_of_success<decltype(
+      std::declval<_Fn>()(std::declval<_Args>()...)
+      ), __invoke_other> _S_test(int);
+    template<typename...>
+      static __failure_type _S_test(...);
+  };
+  template<typename _Functor, typename... _ArgTypes>
+    struct __result_of_impl<false, false, _Functor, _ArgTypes...>
+    : private __result_of_other_impl
+    
+{
+      typedef decltype(_S_test<_Functor, _ArgTypes...>(0)) type;
+    };
+  template<typename _Functor, typename... _ArgTypes>
+    struct __invoke_result
+    : public __result_of_impl<
+        is_member_object_pointer<
+          typename remove_reference<_Functor>::type
+        >::value,
+        is_member_function_pointer<
+          typename remove_reference<_Functor>::type
+        >::value,
+ _Functor, _ArgTypes...
+      >::type
+    { };
+{
+  template<typename _Functor, typename... _ArgTypes>
+    struct result_of<_Functor(_ArgTypes...)>
+    : public __invoke_result<_Functor, _ArgTypes...>
+    { };
+{
+  template<size_t _Len, size_t _Align =
+     __alignof__(typename __aligned_storage_msa<_Len>::__type)>
+    using aligned_storage_t = typename aligned_storage<_Len, _Align>::type;
+  template <size_t _Len, typename... _Types>
+    using aligned_union_t = typename aligned_union<_Len, _Types...>::type;
+  template<typename _Tp>
+    using decay_t = typename decay<_Tp>::type;
+  template<bool _Cond, typename _Tp = void>
+    using enable_if_t = typename enable_if<_Cond, _Tp>::type;
+  template<bool _Cond, typename _Iftrue, typename _Iffalse>
+    using conditional_t = typename conditional<_Cond, _Iftrue, _Iffalse>::type;
+  template<typename... _Tp>
+    using common_type_t = typename common_type<_Tp...>::type;
+  template<typename _Tp>
+    using underlying_type_t = typename underlying_type<_Tp>::type;
+  template<typename _Tp>
+    using result_of_t = typename result_of<_Tp>::type;
+  template<bool _Cond, typename _Tp = void>
+    using __enable_if_t = typename enable_if<_Cond, _Tp>::type;
+  template<typename...> using __void_t = void;
+  template<typename...> using void_t = void;
+  template<typename _Default, typename _AlwaysVoid,
+    template<typename...> class _Op, typename... _Args>
+    struct __detector
+    
+{
+      using value_t = false_type;
+      using type = _Default;
+    };
+  template<typename _Default, template<typename...> class _Op,
+     typename... _Args>
+    struct __detector<_Default, __void_t<_Op<_Args...>>, _Op, _Args...>
+    
+{
+      using value_t = true_type;
+      using type = _Op<_Args...>;
+    };
+  template<typename _Default, template<typename...> class _Op,
+    typename... _Args>
+    using __detected_or = __detector<_Default, void, _Op, _Args...>;
+  template<typename _Default, template<typename...> class _Op,
+    typename... _Args>
+    using __detected_or_t
+      = typename __detected_or<_Default, _Op, _Args...>::type;
+  template <typename _Tp>
+    struct __is_swappable;
+  template <typename _Tp>
+    struct __is_nothrow_swappable;
+  template<typename... _Elements>
+    class tuple;
+  template<typename>
+    struct __is_tuple_like_impl : false_type
+    { };
+{
+  template<typename... _Tps>
+    struct __is_tuple_like_impl<tuple<_Tps...>> : true_type
+    { };
+{
+  template<typename _Tp>
+    struct __is_tuple_like
+    : public __is_tuple_like_impl<__remove_cvref_t<_Tp>>::type
+    { };
+{
+  template<typename _Tp>
+    inline
+    typename enable_if<__and_<__not_<__is_tuple_like<_Tp>>,
+         is_move_constructible<_Tp>,
+         is_move_assignable<_Tp>>::value>::type
+    swap(_Tp&, _Tp&)
+    noexcept(__and_<is_nothrow_move_constructible<_Tp>,
+             is_nothrow_move_assignable<_Tp>>::value);
+  template<typename _Tp, size_t _Nm>
+    inline
+    typename enable_if<__is_swappable<_Tp>::value>::type
+    swap(_Tp (&__a)[_Nm], _Tp (&__b)[_Nm])
+    noexcept(__is_nothrow_swappable<_Tp>::value);
+  namespace __swappable_details 
+{
+    using std::swap;
+    struct __do_is_swappable_impl
+    
+{
+      template<typename _Tp, typename
+               = decltype(swap(std::declval<_Tp&>(), std::declval<_Tp&>()))>
+        static true_type __test(int);
+      template<typename>
+        static false_type __test(...);
+    };
+    struct __do_is_nothrow_swappable_impl
+    
+{
+      template<typename _Tp>
+        static __bool_constant<
+          noexcept(swap(std::declval<_Tp&>(), std::declval<_Tp&>()))
+        > __test(int);
+      template<typename>
+        static false_type __test(...);
+    };
+  }
+  template<typename _Tp>
+    struct __is_swappable_impl
+    : public __swappable_details::__do_is_swappable_impl
+    
+{
+      typedef decltype(__test<_Tp>(0)) type;
+    };
+  template<typename _Tp>
+    struct __is_nothrow_swappable_impl
+    : public __swappable_details::__do_is_nothrow_swappable_impl
+    
+{
+      typedef decltype(__test<_Tp>(0)) type;
+    };
+  template<typename _Tp>
+    struct __is_swappable
+    : public __is_swappable_impl<_Tp>::type
+    { };
+{
+  template<typename _Tp>
+    struct __is_nothrow_swappable
+    : public __is_nothrow_swappable_impl<_Tp>::type
+    { };
+{
+  template<typename _Tp>
+    struct is_swappable
+    : public __is_swappable_impl<_Tp>::type
+    { };
+{
+  template<typename _Tp>
+    struct is_nothrow_swappable
+    : public __is_nothrow_swappable_impl<_Tp>::type
+    { };
+{
+  template<typename _Tp>
+                      constexpr bool is_swappable_v =
+      is_swappable<_Tp>::value;
+  template<typename _Tp>
+                      constexpr bool is_nothrow_swappable_v =
+      is_nothrow_swappable<_Tp>::value;
+  namespace __swappable_with_details 
+{
+    using std::swap;
+    struct __do_is_swappable_with_impl
+    
+{
+      template<typename _Tp, typename _Up, typename
+               = decltype(swap(std::declval<_Tp>(), std::declval<_Up>())),
+               typename
+               = decltype(swap(std::declval<_Up>(), std::declval<_Tp>()))>
+        static true_type __test(int);
+      template<typename, typename>
+        static false_type __test(...);
+    };
+    struct __do_is_nothrow_swappable_with_impl
+    
+{
+      template<typename _Tp, typename _Up>
+        static __bool_constant<
+          noexcept(swap(std::declval<_Tp>(), std::declval<_Up>()))
+          &&
+          noexcept(swap(std::declval<_Up>(), std::declval<_Tp>()))
+        > __test(int);
+      template<typename, typename>
+        static false_type __test(...);
+    };
+  }
+  template<typename _Tp, typename _Up>
+    struct __is_swappable_with_impl
+    : public __swappable_with_details::__do_is_swappable_with_impl
+    
+{
+      typedef decltype(__test<_Tp, _Up>(0)) type;
+    };
+  template<typename _Tp>
+    struct __is_swappable_with_impl<_Tp&, _Tp&>
+    : public __swappable_details::__do_is_swappable_impl
+    
+{
+      typedef decltype(__test<_Tp&>(0)) type;
+    };
+  template<typename _Tp, typename _Up>
+    struct __is_nothrow_swappable_with_impl
+    : public __swappable_with_details::__do_is_nothrow_swappable_with_impl
+    
+{
+      typedef decltype(__test<_Tp, _Up>(0)) type;
+    };
+  template<typename _Tp>
+    struct __is_nothrow_swappable_with_impl<_Tp&, _Tp&>
+    : public __swappable_details::__do_is_nothrow_swappable_impl
+    
+{
+      typedef decltype(__test<_Tp&>(0)) type;
+    };
+  template<typename _Tp, typename _Up>
+    struct is_swappable_with
+    : public __is_swappable_with_impl<_Tp, _Up>::type
+    { };
+{
+  template<typename _Tp, typename _Up>
+    struct is_nothrow_swappable_with
+    : public __is_nothrow_swappable_with_impl<_Tp, _Up>::type
+    { };
+{
+  template<typename _Tp, typename _Up>
+                      constexpr bool is_swappable_with_v =
+      is_swappable_with<_Tp, _Up>::value;
+  template<typename _Tp, typename _Up>
+                      constexpr bool is_nothrow_swappable_with_v =
+      is_nothrow_swappable_with<_Tp, _Up>::value;
+  template<typename _Result, typename _Ret,
+    bool = is_void<_Ret>::value, typename = void>
+    struct __is_invocable_impl : false_type { };
+{
+  template<typename _Result, typename _Ret>
+    struct __is_invocable_impl<_Result, _Ret,
+                                true,
+          __void_t<typename _Result::type>>
+    : true_type
+    { };
+{
+ template<typename _Result, typename _Ret>
+    struct __is_invocable_impl<_Result, _Ret,
+                                false,
+          __void_t<typename _Result::type>>
+    
+{
+    private:
+      static typename _Result::type _S_get();
+      template<typename _Tp>
+ static void _S_conv(_Tp);
+      template<typename _Tp, typename = decltype(_S_conv<_Tp>(_S_get()))>
+ static true_type
+ _S_test(int);
+      template<typename _Tp>
+ static false_type
+ _S_test(...);
+    public:
+      using type = decltype(_S_test<_Ret>(1));
+    };
+ template<typename _Fn, typename... _ArgTypes>
+    struct __is_invocable
+    : __is_invocable_impl<__invoke_result<_Fn, _ArgTypes...>, void>::type
+    { };
+{
+  template<typename _Fn, typename _Tp, typename... _Args>
+    constexpr bool __call_is_nt(__invoke_memfun_ref)
+    
+{
+      using _Up = typename __inv_unwrap<_Tp>::type;
+      return noexcept((std::declval<_Up>().*std::declval<_Fn>())(
+     std::declval<_Args>()...));
+    }
+  template<typename _Fn, typename _Tp, typename... _Args>
+    constexpr bool __call_is_nt(__invoke_memfun_deref)
+    
+{
+      return noexcept(((*std::declval<_Tp>()).*std::declval<_Fn>())(
+     std::declval<_Args>()...));
+    }
+  template<typename _Fn, typename _Tp>
+    constexpr bool __call_is_nt(__invoke_memobj_ref)
+    
+{
+      using _Up = typename __inv_unwrap<_Tp>::type;
+      return noexcept(std::declval<_Up>().*std::declval<_Fn>());
+    }
+  template<typename _Fn, typename _Tp>
+    constexpr bool __call_is_nt(__invoke_memobj_deref)
+    
+{
+      return noexcept((*std::declval<_Tp>()).*std::declval<_Fn>());
+    }
+  template<typename _Fn, typename... _Args>
+    constexpr bool __call_is_nt(__invoke_other)
+    
+{
+      return noexcept(std::declval<_Fn>()(std::declval<_Args>()...));
+    }
+  template<typename _Result, typename _Fn, typename... _Args>
+    struct __call_is_nothrow
+    : __bool_constant<
+ std::__call_is_nt<_Fn, _Args...>(typename _Result::__invoke_type{})
+{
+      >
+    { };
+{
+  template<typename _Fn, typename... _Args>
+    using __call_is_nothrow_
+      = __call_is_nothrow<__invoke_result<_Fn, _Args...>, _Fn, _Args...>;
+  template<typename _Fn, typename... _Args>
+    struct __is_nothrow_invocable
+    : __and_<__is_invocable<_Fn, _Args...>,
+             __call_is_nothrow_<_Fn, _Args...>>::type
+    { };
+{
+  struct __nonesuch 
+{
+    __nonesuch() = delete;
+    ~__nonesuch() = delete;
+    __nonesuch(__nonesuch const&) = delete;
+    void operator=(__nonesuch const&) = delete;
+  };
+}
+namespace std __attribute__ ((__visibility__ ("default")))
+{
+  template<typename _Tp>
+    constexpr _Tp&&
+    forward(typename std::remove_reference<_Tp>::type& __t) noexcept
+    { return static_cast<_Tp&&>(__t); }
+{
+  template<typename _Tp>
+    constexpr _Tp&&
+    forward(typename std::remove_reference<_Tp>::type&& __t) noexcept
+    
+{
+      static_assert(!std::is_lvalue_reference<_Tp>::value, "template argument"
+      " substituting _Tp is an lvalue reference type");
+      return static_cast<_Tp&&>(__t);
+    }
+  template<typename _Tp>
+    constexpr typename std::remove_reference<_Tp>::type&&
+    move(_Tp&& __t) noexcept
+    { return static_cast<typename std::remove_reference<_Tp>::type&&>(__t); }
+{
+  template<typename _Tp>
+    struct __move_if_noexcept_cond
+    : public __and_<__not_<is_nothrow_move_constructible<_Tp>>,
+                    is_copy_constructible<_Tp>>::type { };
+{
+  template<typename _Tp>
+    constexpr typename
+    conditional<__move_if_noexcept_cond<_Tp>::value, const _Tp&, _Tp&&>::type
+    move_if_noexcept(_Tp& __x) noexcept
+    { return std::move(__x); }
+{
+  template<typename _Tp>
+    inline _Tp*
+    addressof(_Tp& __r) noexcept
+    { return std::__addressof(__r); }
+{
+  template<typename _Tp>
+    const _Tp* addressof(const _Tp&&) = delete;
+  template <typename _Tp, typename _Up = _Tp>
+    inline _Tp
+    __exchange(_Tp& __obj, _Up&& __new_val)
+    
+{
+      _Tp __old_val = std::move(__obj);
+      __obj = std::forward<_Up>(__new_val);
+      return __old_val;
+    }
+  template<typename _Tp>
+    inline
+    typename enable_if<__and_<__not_<__is_tuple_like<_Tp>>,
+         is_move_constructible<_Tp>,
+         is_move_assignable<_Tp>>::value>::type
+    swap(_Tp& __a, _Tp& __b)
+    noexcept(__and_<is_nothrow_move_constructible<_Tp>,
+             is_nothrow_move_assignable<_Tp>>::value)
+    
+{
+      _Tp __tmp = std::move(__a);
+      __a = std::move(__b);
+      __b = std::move(__tmp);
+    }
+  template<typename _Tp, size_t _Nm>
+    inline
+    typename enable_if<__is_swappable<_Tp>::value>::type
+    swap(_Tp (&__a)[_Nm], _Tp (&__b)[_Nm])
+    noexcept(__is_nothrow_swappable<_Tp>::value)
+    
+{
+      for (size_t __n = 0; __n < _Nm; ++__n)
+ swap(__a[__n], __b[__n]);
+    }
+}
+extern "C++" 
+{
+namespace std
+{
+  class nested_exception
+  
+{
+    exception_ptr _M_ptr;
+  public:
+    nested_exception() noexcept : _M_ptr(current_exception()) { }
+{
+    nested_exception(const nested_exception&) noexcept = default;
+    nested_exception& operator=(const nested_exception&) noexcept = default;
+    virtual ~nested_exception() noexcept;
+    [[noreturn]]
+    void
+    rethrow_nested() const
+    
+{
+      if (_M_ptr)
+ rethrow_exception(_M_ptr);
+      std::terminate();
+    }
+    exception_ptr
+    nested_ptr() const noexcept
+    { return _M_ptr; }
+{
+  };
+  template<typename _Except>
+    struct _Nested_exception : public _Except, public nested_exception
+    
+{
+      explicit _Nested_exception(const _Except& __ex)
+      : _Except(__ex)
+      { }
+{
+      explicit _Nested_exception(_Except&& __ex)
+      : _Except(static_cast<_Except&&>(__ex))
+      { }
+{
+    };
+  template<typename _Tp>
+    [[noreturn]]
+    inline void
+    __throw_with_nested_impl(_Tp&& __t, true_type)
+    
+{
+      using _Up = typename remove_reference<_Tp>::type;
+      throw _Nested_exception<_Up>{std::forward<_Tp>(__t)};
+{
+    }
+  template<typename _Tp>
+    [[noreturn]]
+    inline void
+    __throw_with_nested_impl(_Tp&& __t, false_type)
+    { throw std::forward<_Tp>(__t); }
+{
+  template<typename _Tp>
+    [[noreturn]]
+    inline void
+    throw_with_nested(_Tp&& __t)
+    
+{
+      using _Up = typename decay<_Tp>::type;
+      using _CopyConstructible
+ = __and_<is_copy_constructible<_Up>, is_move_constructible<_Up>>;
+      static_assert(_CopyConstructible::value,
+   "throw_with_nested argument must be CopyConstructible");
+      using __nest = __and_<is_class<_Up>, __bool_constant<!__is_final(_Up)>,
+       __not_<is_base_of<nested_exception, _Up>>>;
+      std::__throw_with_nested_impl(std::forward<_Tp>(__t), __nest{});
+{
+    }
+  template<typename _Tp>
+    using __rethrow_if_nested_cond = typename enable_if<
+      __and_<is_polymorphic<_Tp>,
+      __or_<__not_<is_base_of<nested_exception, _Tp>>,
+     is_convertible<_Tp*, nested_exception*>>>::value
+    >::type;
+  template<typename _Ex>
+    inline __rethrow_if_nested_cond<_Ex>
+    __rethrow_if_nested_impl(const _Ex* __ptr)
+    
+{
+      if (auto __ne_ptr = dynamic_cast<const nested_exception*>(__ptr))
+ __ne_ptr->rethrow_nested();
+    }
+  inline void
+  __rethrow_if_nested_impl(const void*)
+  { }
+{
+  template<typename _Ex>
+    inline void
+    rethrow_if_nested(const _Ex& __ex)
+    { std::__rethrow_if_nested_impl(std::__addressof(__ex)); }
+{
+}
+}
+extern "C++" 
+{
+namespace std
+{
+  class bad_alloc : public exception
+  
+{
+  public:
+    bad_alloc() throw() { }
+{
+    bad_alloc(const bad_alloc&) = default;
+    bad_alloc& operator=(const bad_alloc&) = default;
+    virtual ~bad_alloc() throw();
+    virtual const char* what() const throw();
+  };
+  class bad_array_new_length : public bad_alloc
+  
+{
+  public:
+    bad_array_new_length() throw() { }
+{
+    virtual ~bad_array_new_length() throw();
+    virtual const char* what() const throw();
+  };
+  struct nothrow_t
+  
+{
+    explicit nothrow_t() = default;
+  };
+  extern const nothrow_t nothrow;
+  typedef void (*new_handler)();
+  new_handler set_new_handler(new_handler) throw();
+  new_handler get_new_handler() noexcept;
+}
+                   void* operator new(std::size_t)
+  __attribute__((__externally_visible__));
+                   void* operator new[](std::size_t)
+  __attribute__((__externally_visible__));
+void operator delete(void*) noexcept
+  __attribute__((__externally_visible__));
+void operator delete[](void*) noexcept
+  __attribute__((__externally_visible__));
+                   void* operator new(std::size_t, const std::nothrow_t&) noexcept
+  __attribute__((__externally_visible__, __malloc__));
+                   void* operator new[](std::size_t, const std::nothrow_t&) noexcept
+  __attribute__((__externally_visible__, __malloc__));
+void operator delete(void*, const std::nothrow_t&) noexcept
+  __attribute__((__externally_visible__));
+void operator delete[](void*, const std::nothrow_t&) noexcept
+  __attribute__((__externally_visible__));
+                   inline void* operator new(std::size_t, void* __p) noexcept
+ return __p; }
+{
+                   inline void* operator new[](std::size_t, void* __p) noexcept
+ return __p; }
+{
+inline void operator delete (void*, void*) noexcept { }
+{
+inline void operator delete[](void*, void*) noexcept { }
+{
+}
+class TwoIntsClass
+{
+    public:
+        int intOne;
+        int intTwo;
+};
+class OneIntClass
+{
+    public:
+        int intOne;
+};
+typedef struct _twoIntsStruct
+{
+    int intOne;
+    int intTwo;
+} twoIntsStruct;
+extern "C" 
+{
+extern const int GLOBAL_CONST_TRUE;
+extern const int GLOBAL_CONST_FALSE;
+extern const int GLOBAL_CONST_FIVE;
+extern int globalTrue;
+extern int globalFalse;
+extern int globalFive;
+}
+extern "C" 
+{
+void printLine(const char * line);
+void printWLine(const wchar_t * line);
+void printIntLine (int intNumber);
+void printShortLine (short shortNumber);
+void printFloatLine (float floatNumber);
+void printLongLine(long longNumber);
+void printLongLongLine(int64_t longLongIntNumber);
+void printSizeTLine(size_t sizeTNumber);
+void printHexCharLine(char charHex);
+void printWcharLine(wchar_t wideChar);
+void printUnsignedLine(unsigned unsignedNumber);
+void printHexUnsignedCharLine(unsigned char unsignedCharacter);
+void printDoubleLine(double doubleNumber);
+void printStructLine(const twoIntsStruct * structTwoIntsStruct);
+void printBytesLine(const unsigned char * bytes, size_t numBytes);
+size_t decodeHexChars(unsigned char * bytes, size_t numBytes, const char * hex);
+size_t decodeHexWChars(unsigned char * bytes, size_t numBytes, const wchar_t * hex);
+int globalReturnsTrue();
+int globalReturnsFalse();
+int globalReturnsTrueOrFalse();
+extern int globalArgc;
+extern char** globalArgv;
+}
+namespace CWE762_Mismatched_Memory_Management_Routines__new_free_struct_83
+{
+class CWE762_Mismatched_Memory_Management_Routines__new_free_struct_83_bad
+{
+public:
+    CWE762_Mismatched_Memory_Management_Routines__new_free_struct_83_bad(twoIntsStruct * dataCopy);
+    ~CWE762_Mismatched_Memory_Management_Routines__new_free_struct_83_bad();
+private:
+    twoIntsStruct * data;
+};
+class CWE762_Mismatched_Memory_Management_Routines__new_free_struct_83_goodG2B
+{
+public:
+    CWE762_Mismatched_Memory_Management_Routines__new_free_struct_83_goodG2B(twoIntsStruct * dataCopy);
+    ~CWE762_Mismatched_Memory_Management_Routines__new_free_struct_83_goodG2B();
+private:
+    twoIntsStruct * data;
+};
+class CWE762_Mismatched_Memory_Management_Routines__new_free_struct_83_goodB2G
+{
+public:
+    CWE762_Mismatched_Memory_Management_Routines__new_free_struct_83_goodB2G(twoIntsStruct * dataCopy);
+    ~CWE762_Mismatched_Memory_Management_Routines__new_free_struct_83_goodB2G();
+private:
+    twoIntsStruct * data;
+};
+}
+namespace CWE762_Mismatched_Memory_Management_Routines__new_free_struct_83
+{
+CWE762_Mismatched_Memory_Management_Routines__new_free_struct_83_bad::CWE762_Mismatched_Memory_Management_Routines__new_free_struct_83_bad(twoIntsStruct * dataCopy)
+{
+    data = dataCopy;
+    data = new twoIntsStruct;
+}
+CWE762_Mismatched_Memory_Management_Routines__new_free_struct_83_bad::~CWE762_Mismatched_Memory_Management_Routines__new_free_struct_83_bad()
+{
+    free(data);
+}
+}
